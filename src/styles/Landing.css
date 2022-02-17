@@ -1,0 +1,41 @@
+.landing-background {
+    background-image: url('../images/map-of-nyc.png') no-repeat center center fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    position: absolute;
+    object-fit: cover;
+    z-index: -1;
+    max-height: 100%;
+    min-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+ }
+
+.landing-search {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.landing-search input {
+    border-radius: 20px;
+    height: 50px !important;
+    width: 700px;
+    font-size: 20px;
+    color: gray;
+}
+
+.landing-title {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 400%;
+    font-weight: 700;
+    color: #FFCF24;
+}
