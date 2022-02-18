@@ -1,0 +1,19 @@
+.navbar{
+    background-color: rgb(206, 206, 206);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    position: fixed;
+    font-size: 200%;
+    padding-top: 20px;
+}
+.nav-home-btn{
+    /* background-color: rgb(92, 255, 71); */
+    margin-left: 10%;
+}
+.nav-login-btn{
+    /* background-color: tomato; */
+    margin-left: auto;
+    margin-right: 10%;
+    
+}
