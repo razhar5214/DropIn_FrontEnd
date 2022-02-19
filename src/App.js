@@ -19,14 +19,20 @@ import Landing from './components/Landing';
 import ApartmentView from './components/ApartmentView';
 
 function App() {
+  const [address, setAddress] = useState('')
+
+  function updateAddress(newAddress) {
+    console.log('getting child data in app.js:', newAddress)
+    setAddress(...address, address => newAddress)
+  }
 
   return (
     <div className="App">
       <Router>
-          <Routes className='routes'>
-            <Route exact path="/" element={<Landing />} />
-            <Route exact path="/apartment-view" element={<ApartmentView />} />
-          </Routes>
+        <Routes className='routes'>
+          <Route exact path="/" element={<Landing updateAddress = {updateAddress} />} />
+          <Route exact path="/apartment-view" element={<ApartmentView address = {address} />} />
+        </Routes>
       </Router>
     </div>
   );
