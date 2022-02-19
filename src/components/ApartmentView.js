@@ -1,33 +1,38 @@
 import React from 'react'
-import {useState} from 'react'
-import '../styles/apartmentView.css'
+import { useState } from 'react'
+import '../styles/ApartmentView.css'
+import Navbar from './Navbar';
 
-export default function ApartmentView(){
-    //reviews = ["review1", "review2", "review3", "review4", "review5", "review6"];
+export default function ApartmentView(props) {
     const [userReview, setUserReview] = useState("");
     const [apartmentPic, setApartmentPic] = useState("")
 
-    function handleOnChange(event){
+    function handleOnChange(event) {
         event.preventDefault();
         setUserReview(event.target.value)
         console.log(userReview);
     }
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault();
         console.log(userReview);
     }
-    return(
+    return (
         <div className="apartmentView">
+            <Navbar/>
+            <div className='apt-view-page'>
+                <h1>address: {props.address}</h1>
+            </div>
+
             <div className="apartment-visuals">
                 <div className="apartment-pic">apartment picture</div>
-                <div className="apartment-map">apartment map</div>  
+                <div className="apartment-map">apartment map</div>
             </div>
             <div className="star-rating">
                 Rating: (insert star pic here)
             </div>
             <h1 className="reviews-title">What residents have to say ...</h1>
             <div className="reviews">
-                
+
                 <div className="review-card">
                     <div className="review-content">The heat is always broken.</div>
                     <div className="review-author">James A.</div>
@@ -44,10 +49,10 @@ export default function ApartmentView(){
                     <div className="review-content">It's a quiet place, I like it.</div>
                     <div className="review-author">Linda A.</div>
                 </div>
-                
+
             </div>
             <form onSubmit={handleSubmit} className="user-review-form">
-                <label> 
+                <label>
                     <input
                         className="user-review-textbox"
                         placeholder='Leave a review...'
@@ -56,9 +61,8 @@ export default function ApartmentView(){
                         onChange={handleOnChange}
                     />
                 </label>
-                <input type="submit" className="user-review-submit-btn"/>
+                <input type="submit" className="user-review-submit-btn" />
             </form>
         </div>
     )
-
 }
