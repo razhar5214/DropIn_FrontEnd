@@ -77,8 +77,10 @@
     font-size: 22px;
     padding: 10px;
 }
+
 .user-review-submit-btn{
-    width: 90px;
+    /* width: 90px; */
+    width: auto;
     height: 36px;
     text-align: center;
     margin-top:2%;
@@ -89,5 +91,4 @@
     border-radius: 10px;
     border: none;
     font-size: 18px;
-
 }
