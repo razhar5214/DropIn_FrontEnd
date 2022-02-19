@@ -1,10 +1,21 @@
 import React from 'react'
+import {useState} from 'react'
 import '../styles/apartmentView.css'
 
 export default function ApartmentView(){
     //reviews = ["review1", "review2", "review3", "review4", "review5", "review6"];
-    
+    const [userReview, setUserReview] = useState("");
+    const [apartmentPic, setApartmentPic] = useState("")
 
+    function handleOnChange(event){
+        event.preventDefault();
+        setUserReview(event.target.value)
+        console.log(userReview);
+    }
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log(userReview);
+    }
     return(
         <div className="apartmentView">
             <div className="apartment-visuals">
@@ -35,6 +46,18 @@ export default function ApartmentView(){
                 </div>
                 
             </div>
+            <form onSubmit={handleSubmit} className="user-review-form">
+                <label> 
+                    <input
+                        className="user-review-textbox"
+                        placeholder='Leave a review...'
+                        type="textarea"
+                        value={userReview}
+                        onChange={handleOnChange}
+                    />
+                </label>
+                <input type="submit" className="user-review-submit-btn"/>
+            </form>
         </div>
     )
 
