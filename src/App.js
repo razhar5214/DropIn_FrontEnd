@@ -1,22 +1,9 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import Landing from './components/Landing';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Landing/>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import './App.css';
+import './styles/App.css';
+import Navbar from './components/Navbar'
+import ApartmentView from './components/ApartmentView'
 import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing';
-import ApartmentView from './components/ApartmentView';
 
 function App() {
   const [address, setAddress] = useState('')
