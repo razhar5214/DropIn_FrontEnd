@@ -4,23 +4,23 @@ import { useNavigate } from 'react-router-dom'
 import PlacesAutocomplete from 'react-places-autocomplete'
 import scriptLoader from 'react-async-script-loader'
 
-
-
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed){
     console.log(props); 
     const [address, setAddress] = useState("");
-
+    
     let navigate = useNavigate()
 
     const handleChange = (value) => {
         setAddress(value) 
     }
+
     const handleSelect = (value) => {
         setAddress(value)
         props.updateAddress(address)
         localStorage.setItem("address", value)
         navigate('/apartment-view')
     }
+
     if(props.isScriptLoaded && props.isScriptLoadSucceed){
         return(
             <div>
@@ -54,7 +54,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed){
 
             </div>
         )
-    }else{
+    } else{
         return(
             <div>NOT loaded</div>
         )
