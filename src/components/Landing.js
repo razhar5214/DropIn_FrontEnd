@@ -12,7 +12,7 @@ export default function Landing(props) {
     console.log(props)
     const [address, setAddress] = useState('')
 
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
 
     // const handleClick = (e) => {
     //     e.preventDefault()
@@ -21,6 +21,9 @@ export default function Landing(props) {
     //     console.log('in landing.js', address)
     //     navigate('/apartment-view')
     // }
+    function updateAddress(addressFromAutoSearch){
+        props.updateAddress(addressFromAutoSearch) 
+    }
     
     return (
 
@@ -41,7 +44,7 @@ export default function Landing(props) {
                 {/* <form onSubmit={(e) => handleClick(e)}>
                     <input placeholder='123 Main Street...' onChange={(e) => setAddress(e.target.value)}></input>
                 </form> */}
-                <AutoSearch updateAdress={props.updateAdress}/>
+                <AutoSearch updateAddress={updateAddress}/>
             </div>
 
         </div >

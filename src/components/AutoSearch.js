@@ -6,23 +6,22 @@ import scriptLoader from 'react-async-script-loader'
 
 
 
-function AutoSearch({isScriptLoaded, isScriptLoadSucceed}, props){
-    console.log(props.updateAddress); 
+function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed){
+    console.log(props); 
     const [address, setAddress] = useState("");
 
-    let navigate = useNavigate();
+    let navigate = useNavigate()
 
     const handleChange = (value) => {
-        setAddress(value);
+        setAddress(value)
     }
     const handleSelect = (value) => {
-        setAddress(value);
-        props.props.updateAddress(address);
-        localStorage.setItem("address", address)
-        console.log('in autosearch.js', address)
+        setAddress(value)
+        props.updateAddress(address)
+        localStorage.setItem("address", value)
         navigate('/apartment-view')
     }
-    if(isScriptLoaded && isScriptLoadSucceed){
+    if(props.isScriptLoaded && props.isScriptLoadSucceed){
         return(
             <div>
                 <PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
@@ -35,11 +34,11 @@ function AutoSearch({isScriptLoaded, isScriptLoadSucceed}, props){
                         <div>
                         {loading && <div>Loading...</div>}
 
-                        {suggestions.map((suggestion)=>{
+                        {suggestions.map((suggestion, key)=>{
                             const style = suggestion.active? 
                             {backgroundColor: "#4287f5", cursor: "pointer"} : 
                             {backgroundColor: "#ffffff", cursor: "pointer"}
-
+                            key = suggestion.description;
                             return (
                                 <div {...getSuggestionItemProps(suggestion, {style})}>
                                     {suggestion.description}
