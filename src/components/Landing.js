@@ -14,6 +14,7 @@ export default function Landing(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         props.updateAddress(address)
+        localStorage.setItem("address", address)
         console.log('in landing.js', address)
         navigate('/apartment-view')
     }

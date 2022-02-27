@@ -34,7 +34,8 @@ export default function ApartmentView(props) {
 
             <div className="apartmentView">
                 <div className='apt-view-page'>
-                    <h1>address: {JSON.parse(localStorage.getItem('address'))}</h1>
+                    {/* <h1>address: {JSON.parse(localStorage.getItem('address'))}</h1> */}
+                    <h1>address: {localStorage.getItem("address")}</h1>
                 </div>
 
                 <div className="apartment-visuals">
