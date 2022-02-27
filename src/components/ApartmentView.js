@@ -1,28 +1,40 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/ApartmentView.css'
 import Navbar from './Navbar';
 
 export default function ApartmentView(props) {
     const [userReview, setUserReview] = useState("");
     const [apartmentPic, setApartmentPic] = useState("")
+    const [address, setAddress] = useState("")
+
+    localStorage.setItem("address", JSON.stringify(address)); //new code
+
+    useEffect(() => {
+        setAddress(props.address) //new code
+        // localStorage.setItem("address", JSON.stringify(address));
+        console.log('storage', address)
+    }, [address])
 
     function handleOnChange(event) {
-        event.preventDefault();
+        event.preventDefault(); //should this be deleted?
         setUserReview(event.target.value)
         console.log(userReview);
     }
+
     function handleSubmit(event) {
         event.preventDefault();
+        // setAddress(event.target.value)
         console.log(userReview);
     }
+
     return (
         <>
             <Navbar />
 
             <div className="apartmentView">
                 <div className='apt-view-page'>
-                    <h1>address: {props.address}</h1>
+                    <h1>address: {JSON.parse(localStorage.getItem('address'))}</h1>
                 </div>
 
                 <div className="apartment-visuals">

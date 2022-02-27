@@ -11,7 +11,7 @@ export default function Landing(props) {
 
     let navigate = useNavigate()
 
-    const handleClick = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault()
         props.updateAddress(address)
         console.log('in landing.js', address)
@@ -34,7 +34,7 @@ export default function Landing(props) {
 
             <div className='landing-search'>
                 <h1 className='landing-title'>DROP-IN</h1>
-                <form onSubmit={(e) => handleClick(e)}>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <input placeholder='123 Main Street...' onChange={(e) => setAddress(e.target.value)}></input>
                 </form>
             </div>

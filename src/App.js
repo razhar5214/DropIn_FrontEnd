@@ -10,15 +10,21 @@ function App() {
 
   function updateAddress(newAddress) {
     console.log('getting child data in app.js:', newAddress)
-    setAddress(...address, address => newAddress)
+    // setAddress(...address, address => newAddress)
+    setAddress(address => newAddress)
   }
+
+  // useEffect(() => {
+  //   localStorage.setItem("address", JSON.stringify(address));
+  //   console.log('storage', address)
+  // }, [address])
 
   return (
     <div className="App">
       <Router>
         <Routes className='routes'>
-          <Route exact path="/" element={<Landing updateAddress = {updateAddress} />} />
-          <Route exact path="/apartment-view" element={<ApartmentView address = {address} />} />
+          <Route exact path="/" element={<Landing updateAddress={updateAddress} />} />
+          <Route exact path="/apartment-view" element={<ApartmentView address={address} />} />
         </Routes>
       </Router>
     </div>
