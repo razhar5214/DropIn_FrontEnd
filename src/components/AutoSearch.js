@@ -13,7 +13,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed){
     let navigate = useNavigate()
 
     const handleChange = (value) => {
-        setAddress(value)
+        setAddress(value) 
     }
     const handleSelect = (value) => {
         setAddress(value)
