@@ -11,10 +11,12 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed){
     let navigate = useNavigate()
 
     const handleChange = (value) => {
+        console.log('handle change', address)
         setAddress(value) 
     }
 
     const handleSelect = (value) => {
+        console.log('handle select', address)
         setAddress(value)
         props.updateAddress(address)
         localStorage.setItem("address", value)
