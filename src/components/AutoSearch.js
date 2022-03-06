@@ -26,8 +26,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     }
 
     const handleSelect = (value) => {
-        console.log(value)
-
+        console.log('handle select', address)
         setAddress(value)
         props.updateAddress(address)
         localStorage.setItem("address", value)
