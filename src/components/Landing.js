@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import BackgroundImage from '../images/map-of-nyc.png'
@@ -44,6 +44,8 @@ export default function Landing(props) {
 
             </div>
 
+
         </div >
+
     )
 }
