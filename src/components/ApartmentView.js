@@ -16,6 +16,7 @@ export default function ApartmentView(props) {
         event.preventDefault();
         console.log(userReview);
     }
+    
     return (
         <>
             <Navbar />
