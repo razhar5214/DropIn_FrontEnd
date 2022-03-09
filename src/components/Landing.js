@@ -9,7 +9,7 @@ import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import AutoSearch from './AutoSearch'
 
 export default function Landing(props) {
-    console.log(props)
+    console.log('in landing',props)
     const [address, setAddress] = useState('')
 
     let navigate = useNavigate()
@@ -23,7 +23,7 @@ export default function Landing(props) {
     // }
 
     // function updateAddress(addressFromAutoSearch){
-    //     props.updateAddress(addressFromAutoSearch) 
+    //     props.updateAddress(addressFromAutoSearch) //sending it up to App.js
     // }
 
     return (
@@ -40,10 +40,9 @@ export default function Landing(props) {
                 {/* {<form onSubmit={(e) => handleSubmit}>
                     {<input placeholder='123 Main Street...' onChange={(e) => setAddress(e.target.value)}></input>}
                 </form> */}
-                <AutoSearch updateAddress={props.updateAddress} />
+                <AutoSearch updateAddress={props.updateAddress} updateCoordinates={props.updateCoordinates}/>
 
             </div>
-
 
         </div >
 

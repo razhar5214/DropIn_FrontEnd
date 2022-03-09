@@ -3,7 +3,10 @@ import { useState } from 'react'
 import '../styles/ApartmentView.css'
 import Navbar from './Navbar';
 
+import Streetview from 'react-google-streetview';
+
 export default function ApartmentView(props) {
+    console.log('in apartment view', props)
     const [userReview, setUserReview] = useState("");
     const [apartmentPic, setApartmentPic] = useState("")
 
@@ -12,14 +15,33 @@ export default function ApartmentView(props) {
         setUserReview(event.target.value)
         console.log(userReview);
     }
+
     function handleSubmit(event) {
         event.preventDefault();
         console.log(userReview);
     }
-    
+
+    const streetViewPanoramaOptions = {
+        // console.log('in apartment view', props.coordinates.lat)
+        position: { lat: props.coordinates.lat, lng: props.coordinates.lng },
+        pov: { heading: 100, pitch: 0 },
+        zoom: 1
+    };
+
     return (
         <>
             <Navbar />
+
+            <div style={{
+                width: '800px',
+                height: '450px',
+                backgroundColor: '#eeeeee'
+            }}>
+                <Streetview
+                    apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
+                    streetViewPanoramaOptions={streetViewPanoramaOptions}
+                />
+            </div>
 
             <div className="apartmentView">
                 <div className='apt-view-page'>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 // import PlacesAutocomplete from 'react-places-autocomplete'
@@ -14,18 +14,26 @@ import scriptLoader from 'react-async-script-loader'
 
 
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
-    console.log(props);
-    const [address, setAddress] = useState("");
+    console.log(props)
 
     let navigate = useNavigate()
+
+    const [address, setAddress] = useState("");
+
+    const [userInput, setUserInput] = useState("");
 
     const [coordinates, setCoordinates] = useState({
         lat: null,
         lng: null,
     });
 
+    useEffect(() => {
+        props.updateAddress(address)
+        props.updateCoordinates(coordinates)
+    }, [address])
+
     const handleChange = (value) => {
-        setAddress(value)
+        setUserInput(value)
     }
 
     // const handleSelect = (value) => {
@@ -43,25 +51,31 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
 
     // }
 
-
     const handleSelect = async (value) => {
         console.log('in handleSelect', address)
-        console.log('in handleSelect',coordinates)
+        console.log('in handleSelect', coordinates)
 
         const results = await geocodeByAddress(value);
         const latLng = await getLatLng(results[0]);
 
-        setCoordinates(latLng);
+        // setCoordinates(...latLng, latLng);
+        setCoordinates(prevCoords => ({
+            ...prevCoords,
+            lat: latLng.lat,
+            lng: latLng.lng
+        }));
+        setUserInput(value)
         setAddress(value)
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
         localStorage.setItem("address", value)
+        localStorage.setItem("coords", latLng)
         // navigate('/apartment-view')
     }
 
 
-    //example lat was 46.9171876
-    //example lng was 17.8951832
+    // example lat was 46.9171876
+    // example lng was 17.8951832
     const streetViewPanoramaOptions = {
         position: { lat: coordinates.lat, lng: coordinates.lng },
         pov: { heading: 100, pitch: 0 },
@@ -85,7 +99,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
                 </div>
 
 
-                <PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
+                <PlacesAutocomplete value={userInput} onChange={handleChange} onSelect={handleSelect}>
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                         <div>
                             <input {...getInputProps({

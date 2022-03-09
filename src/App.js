@@ -21,7 +21,7 @@ function App() {
 
   function updateCoordinates(newCoord) {
     console.log('getting child coordinates data in app.js:', newCoord)
-    setCoordinates(...coordinates, coordinates => newCoord)
+    setCoordinates(coordinates => newCoord)
   }
 
     return (
@@ -29,7 +29,7 @@ function App() {
         <Router>
           <Routes className='routes'>
             <Route exact path="/" element={<Landing updateAddress = {updateAddress} updateCoordinates = {updateCoordinates} />} />
-            <Route exact path="/apartment-view" element={<ApartmentView address = {address} />} />
+            <Route exact path="/apartment-view" element={<ApartmentView address = {address} coordinates = {coordinates}/>} />
             {/* <Route exact path="/" element={<AutoSearch />}/> */}
           </Routes>
         </Router>
