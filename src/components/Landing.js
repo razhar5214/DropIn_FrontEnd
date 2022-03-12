@@ -1,5 +1,5 @@
 import React from 'react'
-import BackgroundImage from '../images/map-of-nyc.png'
+import BackgroundImage from '../images/map-of-nyc2.png'
 import '../styles/Landing.css'
 import AutoSearch from './AutoSearch'
 

@@ -90,7 +90,7 @@ export default function ApartmentView(props) {
                 </div>
 
                 <form onSubmit={handleSubmit} className="user-review-form">
-                    <label>
+                    {/* <label> */}
                         <input
                             className="user-review-textbox"
                             placeholder='Leave a review...'
@@ -98,7 +98,7 @@ export default function ApartmentView(props) {
                             value={userReview}
                             onChange={handleOnChange}
                         />
-                    </label>
+                    {/* </label> */}
                     <input type="submit" value="SUBMIT" className="user-review-submit-btn" />
                 </form>
             </div>
