@@ -19,9 +19,9 @@ export default function ApartmentView(props) {
         event.preventDefault();
         console.log(userReview);
     }
-    
+
     const streetViewPanoramaOptions = {
-        
+
         position: { lat: JSON.parse(localStorage.getItem("lat")), lng: JSON.parse(localStorage.getItem("lng")) },
         pov: { heading: 100, pitch: 0 },
         zoom: 1
@@ -31,7 +31,7 @@ export default function ApartmentView(props) {
         <>
             <Navbar />
 
-            <div style={{
+            {/* <div style={{
                 width: '800px',
                 height: '450px',
                 backgroundColor: '#eeeeee'
@@ -40,22 +40,35 @@ export default function ApartmentView(props) {
                     apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
                     streetViewPanoramaOptions={streetViewPanoramaOptions}
                 />
-            </div>
+            </div> */}
 
             <div className="apartmentView">
+
                 <div className='apt-view-page'>
                     <h1>address: {localStorage.getItem("address")}</h1>
                     <h1>address: {props.address}</h1>
                 </div>
 
                 <div className="apartment-visuals">
-                    <div className="apartment-pic">apartment picture</div>
+
+                    <div className="apartment-pic">apartment picture
+                        <div className='streetview'>
+                            <Streetview
+                                apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
+                                streetViewPanoramaOptions={streetViewPanoramaOptions}
+                            />
+                        </div>
+                    </div>
+
                     <div className="apartment-map">apartment map</div>
                 </div>
+
                 <div className="star-rating">
                     Rating: (insert star pic here)
                 </div>
+
                 <h1 className="reviews-title">What residents have to say ...</h1>
+
                 <div className="reviews">
 
                     <div className="review-card">
@@ -74,8 +87,8 @@ export default function ApartmentView(props) {
                         <div className="review-content">It's a quiet place, I like it.</div>
                         <div className="review-author">Linda A.</div>
                     </div>
-
                 </div>
+
                 <form onSubmit={handleSubmit} className="user-review-form">
                     <label>
                         <input
