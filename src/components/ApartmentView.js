@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from 'react'
 import '../styles/ApartmentView.css'
 import Navbar from './Navbar';
-
 import Streetview from 'react-google-streetview';
 
 export default function ApartmentView(props) {
@@ -20,10 +19,10 @@ export default function ApartmentView(props) {
         event.preventDefault();
         console.log(userReview);
     }
-
+    
     const streetViewPanoramaOptions = {
-        // console.log('in apartment view', props.coordinates.lat)
-        position: { lat: props.coordinates.lat, lng: props.coordinates.lng },
+        
+        position: { lat: JSON.parse(localStorage.getItem("lat")), lng: JSON.parse(localStorage.getItem("lng")) },
         pov: { heading: 100, pitch: 0 },
         zoom: 1
     };
@@ -46,6 +45,7 @@ export default function ApartmentView(props) {
             <div className="apartmentView">
                 <div className='apt-view-page'>
                     <h1>address: {localStorage.getItem("address")}</h1>
+                    <h1>address: {props.address}</h1>
                 </div>
 
                 <div className="apartment-visuals">

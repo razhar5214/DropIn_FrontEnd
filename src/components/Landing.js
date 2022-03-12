@@ -1,31 +1,17 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
 import BackgroundImage from '../images/map-of-nyc.png'
 import '../styles/Landing.css'
-import ApartmentView from './ApartmentView'
-import { Link } from 'react-router-dom'
-import GooglePlacesAutocomplete from 'react-google-places-autocomplete'
 import AutoSearch from './AutoSearch'
 
 export default function Landing(props) {
-    console.log('in landing',props)
-    const [address, setAddress] = useState('')
+    console.log('Landing Props: ',props);
 
-    let navigate = useNavigate()
-
-    // const handleSubmit = () => {
-    //     e.preventDefault()
-    //     props.updateAddress(address)
-    //     localStorage.setItem("address", address)
-    //     console.log('in landing.js', address)
-    //     navigate('/apartment-view')
-    // }
-
-    // function updateAddress(addressFromAutoSearch){
-    //     props.updateAddress(addressFromAutoSearch) //sending it up to App.js
-    // }
-
+    function updateAddress(addressFromAutoSearch){
+        props.updateAddress(addressFromAutoSearch) //sending it up to App.js
+    }
+    function updateCoordinates(coordsFromAutoSearch){
+        props.updateCoordinates(coordsFromAutoSearch) //sending it up to App.js
+    }
     return (
 
         <div className='landing-page'>
@@ -37,10 +23,7 @@ export default function Landing(props) {
             <div className='landing-search'>
                 <h1 className='landing-title'>DROP-IN</h1>
 
-                {/* {<form onSubmit={(e) => handleSubmit}>
-                    {<input placeholder='123 Main Street...' onChange={(e) => setAddress(e.target.value)}></input>}
-                </form> */}
-                <AutoSearch updateAddress={props.updateAddress} updateCoordinates={props.updateCoordinates}/>
+                <AutoSearch updateAddress={updateAddress} updateCoordinates={updateCoordinates}/>
 
             </div>
 

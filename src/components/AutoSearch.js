@@ -1,11 +1,6 @@
 import React, { useEffect } from "react"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import PlacesAutocomplete from 'react-places-autocomplete'
-// import Autocomplete from "react-google-autocomplete";
-// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
-// import ReactStreetview from 'react-streetview';
-import Streetview from 'react-google-streetview';
 import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
@@ -14,8 +9,8 @@ import scriptLoader from 'react-async-script-loader'
 
 
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
-    console.log(props)
-
+    console.log('AutoSearch Props: ',props);
+    
     let navigate = useNavigate()
 
     const [address, setAddress] = useState("");
@@ -27,29 +22,16 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         lng: null,
     });
 
+
     useEffect(() => {
-        props.updateAddress(address)
-        props.updateCoordinates(coordinates)
+            props.updateAddress(address)
+            props.updateCoordinates(coordinates)
     }, [address])
+
 
     const handleChange = (value) => {
         setUserInput(value)
     }
-
-    // const handleSelect = (value) => {
-    //     console.log('handle select', address)
-    //     setAddress(value)
-    //     props.updateAddress(address)
-    //     localStorage.setItem("address", value)
-    //     // navigate('/apartment-view')
-
-    //     geocodeByAddress(value)
-    //         .then(results => getLatLng(results[0]))
-    //         .then(latLng => console.log('Success', latLng))
-    //         .catch(error => console.error('Error', error))
-    //     ;
-
-    // }
 
     const handleSelect = async (value) => {
         console.log('in handleSelect', address)
@@ -58,46 +40,24 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         const results = await geocodeByAddress(value);
         const latLng = await getLatLng(results[0]);
 
-        // setCoordinates(...latLng, latLng);
         setCoordinates(prevCoords => ({
             ...prevCoords,
             lat: latLng.lat,
             lng: latLng.lng
         }));
         setUserInput(value)
-        setAddress(value)
+        setAddress(...address, address => value)
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
         localStorage.setItem("address", value)
-        localStorage.setItem("coords", latLng)
-        // navigate('/apartment-view')
+        localStorage.setItem("lat", JSON.stringify(latLng.lat))
+        localStorage.setItem("lng", JSON.stringify(latLng.lng))
+        navigate('/apartment-view')
     }
-
-
-    // example lat was 46.9171876
-    // example lng was 17.8951832
-    const streetViewPanoramaOptions = {
-        position: { lat: coordinates.lat, lng: coordinates.lng },
-        pov: { heading: 100, pitch: 0 },
-        zoom: 1
-    };
 
     if (props.isScriptLoaded && props.isScriptLoadSucceed) {
         return (
             <div>
-
-
-                <div style={{
-                    width: '800px',
-                    height: '450px',
-                    backgroundColor: '#eeeeee'
-                }}>
-                    <Streetview
-                        apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
-                        streetViewPanoramaOptions={streetViewPanoramaOptions}
-                    />
-                </div>
-
 
                 <PlacesAutocomplete value={userInput} onChange={handleChange} onSelect={handleSelect}>
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (

@@ -13,7 +13,6 @@ export default function Navbar() {
             <div className='nav-buttons'>
                 <div className="nav-home-btn"> <Link to="/">HOME </Link></div>
                 <div className='nav-input'>
-                <AutoSearch />
                 </div>
                 <div className="nav-login-btn"> LOGIN </div>
             </div>
