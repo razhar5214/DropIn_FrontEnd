@@ -11,7 +11,7 @@
     /* background-color: violet; */
     width: 100%;
     margin: auto;
-    height: 400px;
+    height: 450px;
     display: flex;
     margin-top: 5%;
     text-align: center;
@@ -20,27 +20,20 @@
 
 .apartment-pic {
     background-color: teal;
-    /* width: 50%; */
-    width: 100px;
-    height: 100px;
-    padding: 10%;
+    width: 50%; 
     position: relative;
 }
 
 .streetview {
-    position: absolute;
-    width: 500px;
-    height: 450px;
+    position: relative;
+    width: 100%;
+    height: 100%;
     background-color: #eeeeee;
-    top: 0;
-    left: 0;
 }
 
 .apartment-map {
     background-color: turquoise;
     width: 50%;
-    padding: 10%;
-    position: relative;
 }
 
 .star-rating {

@@ -17,7 +17,7 @@ export default function Landing(props) {
         <div className='landing-page'>
 
             <div>
-                <img className='landing-background' src={BackgroundImage} />
+                <img className='landing-background' src={BackgroundImage} alt=""/>
             </div>
 
             <div className='landing-search'>

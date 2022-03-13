@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Navbar.css"
-import AutoSearch from './AutoSearch';
 import BackgroundImage from '../images/apartment-skyline.jpg'
 
 export default function Navbar() {

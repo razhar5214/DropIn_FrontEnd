@@ -2,12 +2,15 @@ import React from 'react'
 import { useState } from 'react'
 import '../styles/ApartmentView.css'
 import Navbar from './Navbar';
-import Streetview from 'react-google-streetview';
+import Map from './Map'
+import ApartmentPic from './ApartmentPic';
+import {withScriptjs, withGoogleMap} from 'react-google-maps'
+
+const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function ApartmentView(props) {
     console.log('in apartment view', props)
     const [userReview, setUserReview] = useState("");
-    const [apartmentPic, setApartmentPic] = useState("")
 
     function handleOnChange(event) {
         event.preventDefault();
@@ -20,53 +23,43 @@ export default function ApartmentView(props) {
         console.log(userReview);
     }
 
-    const streetViewPanoramaOptions = {
-
-        position: { lat: JSON.parse(localStorage.getItem("lat")), lng: JSON.parse(localStorage.getItem("lng")) },
-        pov: { heading: 100, pitch: 0 },
-        zoom: 1
-    };
-
     return (
         <>
+        {/* Render NAVBAR */}
             <Navbar />
-
-            {/* <div style={{
-                width: '800px',
-                height: '450px',
-                backgroundColor: '#eeeeee'
-            }}>
-                <Streetview
-                    apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
-                    streetViewPanoramaOptions={streetViewPanoramaOptions}
-                />
-            </div> */}
 
             <div className="apartmentView">
 
                 <div className='apt-view-page'>
-                    <h1>address: {localStorage.getItem("address")}</h1>
-                    <h1>address: {props.address}</h1>
+                    <h1>{localStorage.getItem("address")}</h1>
+                    {/* <h1>address: {props.address}</h1> */}
                 </div>
 
                 <div className="apartment-visuals">
-
-                    <div className="apartment-pic">apartment picture
+            {/* Render PICTURE of Address */}
+                    <div className="apartment-pic">
                         <div className='streetview'>
-                            <Streetview
-                                apiKey={process.env.REACT_APP_GOOGLE_MAP_API}
-                                streetViewPanoramaOptions={streetViewPanoramaOptions}
-                            />
+                            <ApartmentPic/>
                         </div>
                     </div>
-
-                    <div className="apartment-map">apartment map</div>
+            {/* Render MAP of Address */}
+                    <div className="apartment-map">
+                        <WrappedMap 
+                            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&
+                            libraries=geometry.drawing.places&key=${
+                                process.env.REACT_APP_GOOGLE_MAP_API
+                            }`}
+                            loadingElement={<div style={{  height: "100%"  }}  />}
+                            containerElement={<div style={{  height: "100%"  }}  />}
+                            mapElement={<div style={{  height: "100%"  }}  />}
+                        />
+                    </div>
                 </div>
-
+            {/* Show RATING of Address */}         
                 <div className="star-rating">
                     Rating: (insert star pic here)
                 </div>
-
+            {/* Show REVIEWS of Address */}              
                 <h1 className="reviews-title">What residents have to say ...</h1>
 
                 <div className="reviews">
@@ -88,7 +81,7 @@ export default function ApartmentView(props) {
                         <div className="review-author">Linda A.</div>
                     </div>
                 </div>
-
+                {/* USER INPUT - review*/}       
                 <form onSubmit={handleSubmit} className="user-review-form">
                     {/* <label> */}
                         <input

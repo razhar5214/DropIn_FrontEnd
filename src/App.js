@@ -1,11 +1,8 @@
 import './styles/App.css';
-import Navbar from './components/Navbar'
 import ApartmentView from './components/ApartmentView'
-import Map from './components/AutoSearch'
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing';
-import AutoSearch from './components/AutoSearch';
 
 function App() {
   const [address, setAddress] = useState('')
