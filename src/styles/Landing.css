@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400&display=swap');
+
 .landing-background {
-    background-image: url('../images/map-of-nyc.png') no-repeat center center fixed;
+    background-image: url('../images/map-of-nyc2.png') no-repeat center center fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,24 +21,37 @@
  }
 
 .landing-search {
+    align-items: center;
     position: fixed;
     top: 40%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
 .landing-search input {
+    padding-left: 3%;
     border-radius: 20px;
-    height: 50px !important;
+    /* height: 50px !important;
     width: 700px;
-    font-size: 20px;
-    color: gray;
+    font-size: 20px; */
+    font-size: 1.5vw;
+    height: 3vw !important;
+    width: 40vw;
+    color: rgb(182, 182, 182);
+    border-style: solid;
+    caret-color: blue;
 }
 
 .landing-title {
-    font-family: 'Varela Round', sans-serif;
-    font-size: 400%;
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;
+    /* font-family: 'Varela Round', sans-serif; */
+    /* font-size: 400%; */
+    font-family: 'Lexend Peta', sans-serif;
+    font-size: 4vw;
     font-weight: 700;
-    color: #FFCF24;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #ff9666;
+    text-shadow: 0px 4px 4px rgba(8, 8, 8, 0.25)
 }

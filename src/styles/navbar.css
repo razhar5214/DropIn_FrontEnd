@@ -1,20 +1,45 @@
-.navbar{
-    background-color: rgb(206, 206, 206);
+.navbar {
+    /* background-color: rgb(206, 206, 206);
     width: 100%;
     height: 80px;
-    display: flex;
-    /* position: fixed; */
+    display: flex;*/
     font-size: 30px;
-    padding-top: 40px;
+    padding: 40px;
+    overflow: hidden;
+    position: relative;
 }
 
-.nav-home-btn{
-    /* background-color: rgb(92, 255, 71); */
+.nav-img {
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+
+.nav-buttons {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+.nav-input {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    align-self: center;  
+}
+
+.nav-home-btn {
     margin-left: 10%;
 }
 
-.nav-login-btn{
-    /* background-color: tomato; */
-    margin-left: auto;
-    margin-right: 10%; 
+.nav-login-btn {
+    margin-right: 10%;
 }
+
+a:link, a:visited, a:hover, a:active {
+    color: white;
+    text-decoration: none;
+ }
