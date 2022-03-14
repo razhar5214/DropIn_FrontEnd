@@ -12,12 +12,12 @@ function App() {
 });
 
   function updateAddress(newAddress) {
-    console.log('getting child address data in app.js:', newAddress)
+  //console.log('getting child address data in app.js:', newAddress)
     setAddress(...address, address => newAddress)
   }
 
   function updateCoordinates(newCoord) {
-    console.log('getting child coordinates data in app.js:', newCoord)
+  //console.log('getting child coordinates data in app.js:', newCoord)
     setCoordinates(coordinates => newCoord)
   }
 

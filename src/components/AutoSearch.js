@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PlacesAutocomplete, {
-    geocodeByAddress,
+    geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
 import scriptLoader from 'react-async-script-loader'
@@ -16,6 +16,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     const [address, setAddress] = useState("");
 
     const [userInput, setUserInput] = useState("");
+
 
     const [coordinates, setCoordinates] = useState({
         lat: null,
@@ -33,12 +34,16 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         setUserInput(value)
     }
 
-    const handleSelect = async (value) => {
+    const handleSelect = async (value, valuePlaceID) => {
+        console.log(valuePlaceID);
         console.log('in handleSelect', address)
         console.log('in handleSelect', coordinates)
 
-        const results = await geocodeByAddress(value);
+        const results = await geocodeByPlaceId(valuePlaceID);
+        console.log(results)
+        
         const latLng = await getLatLng(results[0]);
+        console.log(latLng)
 
         setCoordinates(prevCoords => ({
             ...prevCoords,
@@ -50,8 +55,9 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
         localStorage.setItem("address", value)
-        localStorage.setItem("lat", JSON.stringify(latLng.lat))
-        localStorage.setItem("lng", JSON.stringify(latLng.lng))
+        localStorage.setItem("lat", JSON.stringify(latLng.lat).substr(0,12))
+        localStorage.setItem("lng", JSON.stringify(latLng.lng).substr(0,12))
+        localStorage.setItem("placeID", JSON.stringify(valuePlaceID))
         navigate('/apartment-view')
     }
 
@@ -59,8 +65,9 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         return (
             <div>
 
-                <PlacesAutocomplete value={userInput} onChange={handleChange} onSelect={handleSelect}>
+                <PlacesAutocomplete value={userInput} valuePlaceID onChange={handleChange} onSelect={handleSelect}>
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                       
                         <div>
                             <input {...getInputProps({
                                 placeholder: "Enter Address ...",

@@ -39,7 +39,8 @@ export default function ApartmentView(props) {
             {/* Render PICTURE of Address */}
                     <div className="apartment-pic">
                         <div className='streetview'>
-                            <ApartmentPic/>
+
+                                <ApartmentPic/>
                         </div>
                     </div>
             {/* Render MAP of Address */}
