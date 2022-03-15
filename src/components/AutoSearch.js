@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PlacesAutocomplete, {
@@ -13,9 +13,9 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     
     let navigate = useNavigate()
 
-    const [address, setAddress] = useState("");
+    const [address, setAddress] = useState('');
 
-    const [userInput, setUserInput] = useState("");
+    const [userInput, setUserInput] = useState('');
 
 
     const [coordinates, setCoordinates] = useState({
@@ -43,7 +43,8 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         console.log(results)
         
         const latLng = await getLatLng(results[0]);
-        console.log(latLng)
+        console.log('latLng',latLng)
+        console.log(results[0].geometry.location.lat())
 
         setCoordinates(prevCoords => ({
             ...prevCoords,
@@ -54,10 +55,10 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         setAddress(...address, address => value)
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
-        localStorage.setItem("address", value)
-        localStorage.setItem("lat", JSON.stringify(latLng.lat).substr(0,12))
-        localStorage.setItem("lng", JSON.stringify(latLng.lng).substr(0,12))
-        localStorage.setItem("placeID", JSON.stringify(valuePlaceID))
+        localStorage.setItem('address', value)
+        localStorage.setItem('lat', JSON.stringify(latLng.lat).substr(0,12))
+        localStorage.setItem('lng', JSON.stringify(latLng.lng).substr(0,12))
+        localStorage.setItem('placeID', JSON.stringify(valuePlaceID))
         navigate('/apartment-view')
     }
 
@@ -70,17 +71,17 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
                        
                         <div>
                             <input {...getInputProps({
-                                placeholder: "Enter Address ...",
+                                placeholder: 'Enter Address ...',
                                 className: 'location-search-input'
                             })} />
 
-                            <div className="autocomplete-dropdown-container">
+                            <div className='autocomplete-dropdown-container'>
                                 {loading && <div>Loading...</div>}
 
                                 {suggestions.map((suggestion, key) => {
                                     const style = suggestion.active ?
-                                        { backgroundColor: "#4287f5", cursor: "pointer" } :
-                                        { backgroundColor: "#ffffff", cursor: "pointer" }
+                                        { backgroundColor: '#4287f5', cursor: 'pointer' } :
+                                        { backgroundColor: '#ffffff', cursor: 'pointer' }
                                     key = suggestion.description;
 
                                     return (

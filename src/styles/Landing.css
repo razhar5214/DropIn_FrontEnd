@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;600;700&display=swap');
 
 .landing-background {
     background-image: url('../images/map-of-nyc2.png') no-repeat center center fixed;
@@ -18,7 +18,9 @@
     right: 0;
     bottom: 0;
     margin: auto;
- }
+    -webkit-filter: saturate(400%);
+    filter: saturate(400%);
+}
 
 .landing-search {
     align-items: center;
@@ -40,18 +42,19 @@
     width: 40vw;
     color: rgb(182, 182, 182);
     border-style: solid;
-    caret-color: blue;
+    caret-color: #F87D68;
 }
 
 .landing-title {
-    text-align: center; 
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
     /* font-family: 'Varela Round', sans-serif; */
     /* font-size: 400%; */
     font-family: 'Lexend Peta', sans-serif;
     font-size: 4vw;
-    font-weight: 700;
-    color: #ff9666;
+    font-weight: 600;
+    /* color: #ff9666; */
+    color: #F87D68;
     text-shadow: 0px 4px 4px rgba(8, 8, 8, 0.25)
 }

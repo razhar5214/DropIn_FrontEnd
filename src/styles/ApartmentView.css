@@ -1,26 +1,36 @@
-.apartmentView {
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;700&display=swap');
+
+.apt-view-div {
     width: 80%;
     /* max-width: 900px; */
     max-width: 60%;
     margin: auto;
-    margin-top: 80px;
+    margin-top: 40px;
+    padding-top: 80px;
     /* background-color: blue; */
 }
 
-.apartment-visuals {
-    /* background-color: violet; */
+.apt-address {
+    font-family: 'Lexend Peta', sans-serif;
+    font-size: 80%;
+    margin: 0;
+    font-weight: 700;
+    color: #3B3EFA;
+}
+
+.apt-visuals {
     width: 100%;
     margin: auto;
     height: 450px;
     display: flex;
-    margin-top: 5%;
+    margin-top: 0%;
     text-align: center;
     font-size: 30px;
 }
 
-.apartment-pic {
+.apt-pic {
     background-color: teal;
-    width: 50%; 
+    width: 50%;
     position: relative;
 }
 
@@ -31,18 +41,18 @@
     background-color: #eeeeee;
 }
 
-.apartment-map {
+.apt-map {
     background-color: turquoise;
     width: 50%;
 }
 
 .star-rating {
-    margin-top: 10%;
+    margin-top: 5%;
     font-size: 20px;
 }
 
 .reviews-title {
-    margin-top: 10%;
+    margin-top: 8%;
     /* margin-left: 10%; */
     font-size: 22px;
 }
@@ -62,21 +72,23 @@
 .review-card {
     background-color: rgb(248, 125, 103);
     width: 40%;
+    /* height: 100px; */
+    height: auto;
     margin: 0 auto;
-    height: 100px;
     padding: 20px;
     border-radius: 20px;
     margin-bottom: 5%;
 }
 
 .review-content {
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 110%;
 }
 
 .review-author {
     float: right;
-    margin-top: 5%;
-    font-size: 18px;
+    margin-top: 20%;
+    font-size: 100%;
 }
 
 .user-review-form {
@@ -100,12 +112,12 @@
 }
 
 .user-review-form {
-    margin-bottom: 10%;
+    margin-bottom: 7%;
 }
+
 .user-review-submit-btn {
     position: relative;
     left: 87%;
-
     width: fit-content;
     height: 36px;
     text-align: center;
