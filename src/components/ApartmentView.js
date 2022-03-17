@@ -1,26 +1,39 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import '../styles/ApartmentView.css'
 import Navbar from './Navbar';
 import Map from './Map'
 import ApartmentPic from './ApartmentPic';
 import { withScriptjs, withGoogleMap } from 'react-google-maps'
+import { v4 as uuid } from 'uuid';
 
 const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 export default function ApartmentView(props) {
+    const unique_id = uuid();
     console.log('in apartment view', props)
-    const [userReview, setUserReview] = useState('');
+    // const [userReview, setUserReview] = useState([
+    //     { id: uuidv4(), review: '', author: '' }
+    // ])
+    const [userReview, setUserReview] = useState([
+        {
+            body: null,
+            author: null
+        }
+    ])
+    const [reviewBody, setReviewBody] = useState(null)
+    const [reviewAuthor, setReviewAuthor] = useState(null)
 
-    function handleOnChange(event) {
-        event.preventDefault();
-        setUserReview(event.target.value)
-        console.log(userReview);
-    }
+    const handleSubmit = (event) => {
+        console.log(userReview)
+        console.log(reviewBody)
+        event.preventDefault()
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        console.log(userReview);
+        setUserReview(prev => [...prev, {
+            body: reviewBody,
+            author: reviewAuthor
+        }], reviewBody, reviewAuthor
+        )
     }
 
     return (
@@ -64,8 +77,8 @@ export default function ApartmentView(props) {
                 {/* Show REVIEWS of Address */}
                 <h1 className='reviews-title'>What residents have to say ...</h1>
                 <div className='reviews'>
-
-                    <div className='review-card'>
+                    {/* Filler Data */}
+                    {/* <div className='review-card'>
                         <div className='review-content'>There are issues with the hot water.</div>
                         <div className='review-author'>James A.</div>
                     </div>
@@ -80,22 +93,95 @@ export default function ApartmentView(props) {
                     <div className='review-card'>
                         <div className='review-content'>It's a quiet place, I like it.</div>
                         <div className='review-author'>Linda A.</div>
-                    </div>
+                    </div> */}
+
+                    {userReview.map((item) => {
+                        return (
+                            <>
+                                {item.body ? (
+                                    <div className='review-card'>
+                                        <div className='review-content'>{item.body}</div>
+                                        <div className='review-author'>{item.author}</div>
+                                    </div>
+                                ) : (
+                                    <p></p>
+                                )}
+                            </>
+                        );
+                    })}
+
                 </div>
+
 
                 {/* USER INPUT - review*/}
                 <form onSubmit={handleSubmit} className='user-review-form'>
-                    {/* <label> */}
+
                     <input
+                        className='user-review-textbox'
+                        name='review'
+                        placeholder='Leave a review'
+                        value={reviewBody}
+                        // onChange={event => handleFormChange(userReview.id, event)}
+                        // onChange={(e) => setUserReview(prev => [...prev, {
+                        //     body: e.target.value,
+                        // }]
+                        // )}
+                        onChange={(e) => setReviewBody(reviewBody => e.target.value)}
+                    />
+                    <input
+                        className='user-author-textbox'
+                        name='author'
+                        placeholder='Add your name'
+                        value={reviewAuthor}
+                        // onChange={event => handleFormChange(userReview.id, event)}
+                        // onChange={(e) => setUserReview(prev => [...prev, {
+                        //     author: e.target.value,
+                        // }]
+                        // )}
+                        onChange={(e) => setReviewAuthor(reviewAuthor => e.target.value)}
+                    />
+
+
+                    {/* {userReview.map((input, index) => {
+                        return (
+                            <div key={index}>
+                                <input
+                                    className='user-review-textbox'
+                                    name='review'
+                                    placeholder='Leave a review'
+                                    value={input.review}
+                                    onChange={event => handleFormChange(index, event)}
+                                />
+                                <input
+                                    className='user-review-textbox'
+                                    name='author'
+                                    placeholder='Add your name'
+                                    value={input.author}
+                                    onChange={event => handleFormChange(index, event)}
+                                />
+                            </div>
+                        )
+                    })} */}
+
+                    {/* <input
                         className='user-review-textbox'
                         placeholder='Leave a review...'
                         type='textarea'
-                        value={userReview}
-                        onChange={handleOnChange}
+                        value={userReview || ""}
+                        onChange={(e) => setUserReview(e.target.value)}
                     />
-                    {/* </label> */}
-                    <input type='submit' value='SUBMIT' className='user-review-submit-btn' />
+                    <input
+                        className='user-review-textbox'
+                        placeholder='Your name'
+                        type='textarea'
+                        value={author || ""}
+                        onChange={(e) => setAuthor(e.target.value)}
+                    /> */}
+                    <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
                 </form>
+
+
+
             </div>
         </>
     )

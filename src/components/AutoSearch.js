@@ -45,7 +45,7 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
         const latLng = await getLatLng(results[0]);
         console.log('latLng',latLng)
         console.log(results[0].geometry.location.lat())
-
+        
         setCoordinates(prevCoords => ({
             ...prevCoords,
             lat: latLng.lat,

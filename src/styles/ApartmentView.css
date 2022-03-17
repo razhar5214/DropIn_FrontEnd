@@ -103,19 +103,36 @@
     background-color: rgb(216, 216, 216);
     width: 91%;
     margin: 0 auto;
-    height: 120px;
+    height: 100px;
     border: none;
     border-radius: 12px;
     font-size: 22px;
     padding: 10px;
     position: relative;
+    margin-bottom: 5px;
+}
+
+.user-author-textbox {
+    background-color: rgb(216, 216, 216);
+    width: 91%;
+    margin: 0 auto;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 22px;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 5px;
 }
 
 .user-review-form {
     margin-bottom: 7%;
+    text-align: center;
 }
 
 .user-review-submit-btn {
+    margin-left: 0;
+    margin-right: 0;
     position: relative;
     left: 87%;
     width: fit-content;
