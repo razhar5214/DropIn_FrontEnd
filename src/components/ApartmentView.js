@@ -34,6 +34,9 @@ export default function ApartmentView(props) {
             author: reviewAuthor
         }], reviewBody, reviewAuthor
         )
+
+        setReviewBody('')
+        setReviewAuthor('')
     }
 
     return (
@@ -71,14 +74,14 @@ export default function ApartmentView(props) {
 
                 {/* Show RATING of Address */}
                 <div className='star-rating'>
-                    Rating: (insert star pic here)
+                    {/* Rating: (insert star pic here) */}
                 </div>
 
                 {/* Show REVIEWS of Address */}
                 <h1 className='reviews-title'>What residents have to say ...</h1>
                 <div className='reviews'>
                     {/* Filler Data */}
-                    {/* <div className='review-card'>
+                    <div className='review-card'>
                         <div className='review-content'>There are issues with the hot water.</div>
                         <div className='review-author'>James A.</div>
                     </div>
@@ -86,7 +89,7 @@ export default function ApartmentView(props) {
                         <div className='review-content'>Management takes a while to respond.</div>
                         <div className='review-author'>Crystal T.</div>
                     </div>
-                    <div className='review-card'>
+                    {/* <div className='review-card'>
                         <div className='review-content'>Really friendly neighbors.</div>
                         <div className='review-author'>Anna M.</div>
                     </div>
@@ -121,62 +124,16 @@ export default function ApartmentView(props) {
                         name='review'
                         placeholder='Leave a review'
                         value={reviewBody}
-                        // onChange={event => handleFormChange(userReview.id, event)}
-                        // onChange={(e) => setUserReview(prev => [...prev, {
-                        //     body: e.target.value,
-                        // }]
-                        // )}
-                        onChange={(e) => setReviewBody(reviewBody => e.target.value)}
+                        onChange={(e) => setReviewBody(e.target.value)}
                     />
                     <input
                         className='user-author-textbox'
                         name='author'
                         placeholder='Add your name'
                         value={reviewAuthor}
-                        // onChange={event => handleFormChange(userReview.id, event)}
-                        // onChange={(e) => setUserReview(prev => [...prev, {
-                        //     author: e.target.value,
-                        // }]
-                        // )}
-                        onChange={(e) => setReviewAuthor(reviewAuthor => e.target.value)}
+                        onChange={(e) => setReviewAuthor(e.target.value)}
                     />
 
-
-                    {/* {userReview.map((input, index) => {
-                        return (
-                            <div key={index}>
-                                <input
-                                    className='user-review-textbox'
-                                    name='review'
-                                    placeholder='Leave a review'
-                                    value={input.review}
-                                    onChange={event => handleFormChange(index, event)}
-                                />
-                                <input
-                                    className='user-review-textbox'
-                                    name='author'
-                                    placeholder='Add your name'
-                                    value={input.author}
-                                    onChange={event => handleFormChange(index, event)}
-                                />
-                            </div>
-                        )
-                    })} */}
-
-                    {/* <input
-                        className='user-review-textbox'
-                        placeholder='Leave a review...'
-                        type='textarea'
-                        value={userReview || ""}
-                        onChange={(e) => setUserReview(e.target.value)}
-                    />
-                    <input
-                        className='user-review-textbox'
-                        placeholder='Your name'
-                        type='textarea'
-                        value={author || ""}
-                        onChange={(e) => setAuthor(e.target.value)}
-                    /> */}
                     <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
                 </form>
 
