@@ -1,3 +1,10 @@
+# Demo
+## Searching for an address
+![dropin1](https://user-images.githubusercontent.com/78608476/158740287-973cdc0e-b2dc-48c4-aef0-1276bba49c76.gif)
+## Adding reviews
+![dropin2](https://user-images.githubusercontent.com/78608476/158740826-ff5cea03-e593-4e24-8fc5-6329357f1a0f.gif)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
