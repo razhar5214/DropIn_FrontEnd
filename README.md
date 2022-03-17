@@ -5,7 +5,7 @@
 ![dropin2](https://user-images.githubusercontent.com/78608476/158740826-ff5cea03-e593-4e24-8fc5-6329357f1a0f.gif)
 
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
