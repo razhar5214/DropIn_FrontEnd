@@ -12,26 +12,33 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 export default function ApartmentView(props) {
     const unique_id = uuid();
     console.log('in apartment view', props)
-    // const [userReview, setUserReview] = useState([
-    //     { id: uuidv4(), review: '', author: '' }
-    // ])
+
     const [userReview, setUserReview] = useState([
         {
             body: null,
-            author: null
+            author: null,
+            timestamp: null
         }
     ])
     const [reviewBody, setReviewBody] = useState(null)
     const [reviewAuthor, setReviewAuthor] = useState(null)
+    const [reviewTime, setReviewTime] = useState(null)
+    const [newestReviewBtn, setNewestReviewBtn] = useState(false)
+
+    const dataByNewest = [].concat(userReview)
+        .sort((a, b) => a.timestamp < b.timestamp ? 1 : -1)
 
     const handleSubmit = (event) => {
-        console.log(userReview)
-        console.log(reviewBody)
+        console.log('userReview', userReview)
+        console.log('reviewBody', reviewBody)
         event.preventDefault()
+
+        setReviewTime(Math.floor(Date.now() / 1000))
 
         setUserReview(prev => [...prev, {
             body: reviewBody,
-            author: reviewAuthor
+            author: reviewAuthor,
+            timestamp: reviewTime
         }], reviewBody, reviewAuthor
         )
 
@@ -39,9 +46,14 @@ export default function ApartmentView(props) {
         setReviewAuthor('')
     }
 
+    const handleSortByNewest = (event) => {
+        event.preventDefault()
+        setNewestReviewBtn(true)
+    }
+
     return (
         <>
-            {/* Render NAVBAR */}
+            {/* RENDER NAVBAR */}
             <Navbar />
 
             <div className='apt-view-div'>
@@ -52,14 +64,14 @@ export default function ApartmentView(props) {
                 </div>
 
                 <div className='apt-visuals'>
-                    {/* Render PICTURE of Address */}
+                    {/* RENDER STREETVIEW OF ADDRESS */}
                     <div className='apt-pic'>
                         <div className='streetview'>
                             <ApartmentPic />
                         </div>
                     </div>
 
-                    {/* Render MAP of Address */}
+                    {/* RENDER MAP OF ADDRESS */}
                     <div className='apt-map'>
                         <WrappedMap
                             googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&
@@ -72,13 +84,18 @@ export default function ApartmentView(props) {
                     </div>
                 </div>
 
-                {/* Show RATING of Address */}
+                {/* SHOW RATING OF ADDRESS */}
                 <div className='star-rating'>
                     {/* Rating: (insert star pic here) */}
                 </div>
 
-                {/* Show REVIEWS of Address */}
+                <div>
+                    <button onClick={handleSortByNewest}>SORT BY NEWEST</button>
+                </div>
+
+                {/* SHOW REVIEWS OF ADDRESS */}
                 <h1 className='reviews-title'>What residents have to say ...</h1>
+
                 <div className='reviews'>
                     {/* Filler Data */}
                     <div className='review-card'>
@@ -98,20 +115,39 @@ export default function ApartmentView(props) {
                         <div className='review-author'>Linda A.</div>
                     </div> */}
 
-                    {userReview.map((item) => {
-                        return (
-                            <>
-                                {item.body ? (
-                                    <div className='review-card'>
-                                        <div className='review-content'>{item.body}</div>
-                                        <div className='review-author'>{item.author}</div>
-                                    </div>
-                                ) : (
-                                    <p></p>
-                                )}
-                            </>
-                        );
-                    })}
+                    {newestReviewBtn ?
+                        dataByNewest.map((item) => {
+                            return (
+                                <>
+                                    {item.body ? (
+                                        <div className='review-card'>
+                                            <div className='review-content'>{item.body}</div>
+                                            <div className='review-author'>{item.author}</div>
+                                        </div>
+                                    ) : (
+                                        <p></p>
+                                    )}
+                                </>
+                            );
+                        })
+                        :
+
+                        //if user sorts by new, change the rendering of the reviews by newest review added AKA shortest timestamp. else, show the reviews normally
+
+                        userReview.map((item) => {
+                            return (
+                                <>
+                                    {item.body ? (
+                                        <div className='review-card'>
+                                            <div className='review-content'>{item.body}</div>
+                                            <div className='review-author'>{item.author}</div>
+                                        </div>
+                                    ) : (
+                                        <p></p>
+                                    )}
+                                </>
+                            );
+                        })}
 
                 </div>
 
@@ -136,8 +172,6 @@ export default function ApartmentView(props) {
 
                     <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
                 </form>
-
-
 
             </div>
         </>
