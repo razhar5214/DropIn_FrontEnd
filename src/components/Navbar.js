@@ -14,7 +14,7 @@ export default function Navbar() {
             <div className='nav-buttons'>
                 <div className='nav-home-btn'> <Link to='/'>HOME </Link></div>
                 <img className='nav-logo' src={Logo} alt='Building and map pin(https://www.flaticon.com/free-icon/houses_353354#)' />
-                <div className='nav-login-btn'> LOGIN </div>
+                <div className='nav-login-btn'><Link to='/login'>LOGIN </Link></div>
             </div>
 
         </div>

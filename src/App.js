@@ -3,6 +3,7 @@ import ApartmentView from './components/ApartmentView'
 import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing';
+import Login from "./components/Login"
 
 function App() {
   const [address, setAddress] = useState('')
@@ -27,6 +28,7 @@ function App() {
           <Routes className='routes'>
             <Route exact path="/" element={<Landing updateAddress = {updateAddress} updateCoordinates = {updateCoordinates} />} />
             <Route exact path="/apartment-view" element={<ApartmentView address = {address} coordinates = {coordinates}/>} />
+            <Route exact path="/login" element={<Login/>}/>
             {/* <Route exact path="/" element={<AutoSearch />}/> */}
           </Routes>
         </Router>
