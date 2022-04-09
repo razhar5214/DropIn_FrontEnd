@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import Navbar from "./Navbar"
 import "../styles/Login.css"
 
-export default function Login(){
+export default function SignUp(){
     const [loginData, setLoginData] = useState({
+        firstName: "", 
+        lastName: "",
         username : "",
         password : ""
     });
@@ -25,7 +27,7 @@ export default function Login(){
     async function handleSubmit(e){
         e.preventDefault()
     //  send loginData to backEnd
-	//  await axios.post(`INSERT LINK HERE`, {loginData.username, loginData.password})
+    //  await axios.post(`INSERT LINK HERE`, {loginData.username, loginData.password})
         setRedirect(true)
     }
     return(
@@ -35,8 +37,26 @@ export default function Login(){
 				
 				{/* <img src={logo} className="logo"/> */}
 
-				<h1 className="login-msg">Login to your account</h1>
+				<h1 className="login-msg">Create an account</h1>
 			<form onSubmit={handleSubmit} className="login-form">
+            <label className="user-first-name">
+					<input className="login-input"
+					placeholder="First Name"
+                    type="text" 
+                    name="firstName"
+					value={loginData.firstName}
+					onChange={handleChange}
+					/>
+				</label>
+                <label className="user-last-name">
+					<input className="login-input"
+					placeholder="Last Name"
+                    type="text" 
+                    name="lastName"
+					value={loginData.lastName}
+					onChange={handleChange}
+					/>
+				</label>
 				<label className="login-username">
 					<input className="login-input"
 					placeholder="Username"
@@ -55,7 +75,7 @@ export default function Login(){
 					onChange={handleChange}
 					/>
 				</label>
-				<input type="submit" value="Login" className="login-btns login-submit-btn"/>
+				<input type="submit" value="Sign Up" className="login-btns login-submit-btn"/>
 				{/* <p className="login-OR"> or</p>
 
 				<button className="login-btns login-google-btn">
@@ -64,11 +84,11 @@ export default function Login(){
 				</button> */}
 			</form>
 			<p className="sign-up-msg"> 
-					Dont have an account? <Link to="/signup"> Sign Up </Link> 
+					Already a member? <Link to="/login">Login</Link>
 			</p>
 			<hr className="login-footer-line"/>
 			<p className="login-footer-msg"> 
-			By continuing in you agree to Drop-In's Terms of Service, Privacy Policy
+			By continuing in you agree to Drop-In's Terms of Service and Privacy Policy
 			</p>
 			
 			</div>

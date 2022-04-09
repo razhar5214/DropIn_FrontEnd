@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing';
 import Login from "./components/Login"
+import SignUp from "./components/SignUp"
 
 function App() {
   const [address, setAddress] = useState('')
@@ -29,6 +30,7 @@ function App() {
             <Route exact path="/" element={<Landing updateAddress = {updateAddress} updateCoordinates = {updateCoordinates} />} />
             <Route exact path="/apartment-view" element={<ApartmentView address = {address} coordinates = {coordinates}/>} />
             <Route exact path="/login" element={<Login/>}/>
+            <Route exact path="/signup" element={<SignUp/>}/>
             {/* <Route exact path="/" element={<AutoSearch />}/> */}
           </Routes>
         </Router>

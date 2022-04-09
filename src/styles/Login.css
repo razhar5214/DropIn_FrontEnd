@@ -12,7 +12,7 @@
     /* margin-right: -50%;  */
 	transform: translate(-50%, 50%);
 	/* background-color: rgb(2, 88, 114); */
-	background-color: rgb(248, 248, 248);
+	background-color: rgb(241, 240, 240);
 	
 }
 .logo{
@@ -109,6 +109,7 @@
 	font-size: 20px;
 	margin:0 auto;
 	margin-top: 20px;
+	color: rgb(0, 0, 0);
 }
 .login-footer-line{
 	width:50%;
@@ -121,4 +122,7 @@
 	margin:0 auto;
 }
 
-
+p a:any-link{
+    color: rgb(0, 0, 210);
+    text-decoration: none;
+}
