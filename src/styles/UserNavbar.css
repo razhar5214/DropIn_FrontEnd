@@ -1,19 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;700&display=swap');
 
 .navbar {
-    /* background-color: rgb(206, 206, 206);
-    width: 100%;
-    height: 80px;
-    display: flex;
-    position: relative; */
-    margin: 0;
+    margin: 0 auto;
     font-size: 30px;
-    padding: 15px;
     overflow: hidden;
     position: relative;
     top: 0;
     left: 0;
-    max-width: 90%;
+    min-width: 100%;
     max-height: 100%;
     align-items: center;
     text-align: center;
@@ -22,9 +16,10 @@
 
 .nav-img {
     /* opacity: 0.8; */
-    position: relative;
+    position: absolute;
     left: 0;
     top: 0;
+    width: 100%;
     min-height: 100%;
     filter: saturate(0.7);
 }
@@ -33,11 +28,12 @@
     position: relative;
     width: 70px;
     height: 5%;
-    height: auto;
     margin: 0 auto;
 }
 
 .nav-buttons {
+    margin: 0;
+    padding: 0;
     font-family: 'Lexend Peta', sans-serif;
     font-size: 80%;
     font-weight: 400;
@@ -60,7 +56,7 @@
 }
 
 .nav-login-btn {
-    /* margin-right: 10%; */
+    margin-right: 10%;
 }
 
 a:link, a:visited, a:active {
