@@ -8,12 +8,12 @@
 	border-radius: 70px;
 	position: relative;
 	left: 50%;
-	top: -200px;
+	/* top used to be -200 */
+	top: -250px;
     /* margin-right: -50%;  */
 	transform: translate(-50%, 50%);
 	/* background-color: rgb(2, 88, 114); */
 	background-color: rgb(241, 240, 240);
-	
 }
 .logo{
 	margin-top: 10;
@@ -25,7 +25,6 @@
 .login-msg{
 	font-size: 30px;
 	text-align: center;
-	/* background-color: coral; */
 	margin-inline: auto;
 	padding-top: 100px;
 }

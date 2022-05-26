@@ -2,6 +2,8 @@ import React from 'react'
 import BackgroundImage from '../images/map-of-nyc2.png'
 import '../styles/Landing.css'
 import AutoSearch from './AutoSearch'
+import { Link } from 'react-router-dom';
+import Navbar from './Navbar'
 
 export default function Landing(props) {
     console.log('Landing Props: ',props);
@@ -15,6 +17,7 @@ export default function Landing(props) {
     return (
 
         <div className='landing-page'>
+            <Navbar/>
 
             <div>
                 <img className='landing-background' src={BackgroundImage} alt=''/>
