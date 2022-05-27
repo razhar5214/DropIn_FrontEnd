@@ -3,9 +3,9 @@ import ApartmentView from './components/ApartmentView'
 import React, { useState } from "react"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing';
-import Login from "./components/Login"
-import SignUp from "./components/SignUp"
-import UserDashboard from "./components/UserDashboard"
+import Login from "./components/login-signup/Login"
+import SignUp from "./components/login-signup/SignUp"
+import UserDashboard from "./components/user/UserDashboard"
 
 function App() {
   const [address, setAddress] = useState('')

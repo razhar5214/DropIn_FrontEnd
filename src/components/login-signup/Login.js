@@ -1,23 +1,22 @@
 import React from "react"
 import { useState } from "react"
-import { Link } from 'react-router-dom';
-import Navbar from "./Navbar"
-import { useNavigate } from "react-router-dom";
-import "../styles/Login.css"
+import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+import Navbar from "../Navbar"
+import "../../styles/Login.css"
 
-export default function SignUp() {
+export default function Login() {
 	let navigate = useNavigate()
+
+	const [redirect, setRedirect] = useState(false)
 	const [loginData, setLoginData] = useState({
-		firstname: "",
-		lastname: "",
 		username: "",
 		password: ""
-	});
-	const [redirect, setRedirect] = useState(false)
+	})
 
 	const google_logo = "https://p1.hiclipart.com/preview/209/923/667/google-logo-background-g-suite-google-pay-google-doodle-text-circle-line-area-png-clipart.jpg"
 
-	console.log(loginData);
+	console.log(loginData)
 
 	const handleChange = (event) => {
 		setLoginData(prevData => {
@@ -30,28 +29,30 @@ export default function SignUp() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		setRedirect(true)
+
 		try {
-			const result = await fetch(`https://dropin-backend.herokuapp.com/register`, {
+			const res = await fetch(`https://dropin-backend.herokuapp.com/login`, {
 				method: 'POST',
 				mode: 'cors',
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(loginData)
+				body: JSON.stringify(loginData) //login data is currently a JS object. so you have to send it as JSON object
 			})
-			const resObject = await result.json()
-			console.log('line 43 of registerUser', resObject)
+			const resObject = await res.json()
+			console.log('line 41 of login', resObject)
 			if (resObject.status == 400) {
 				throw resObject
 			}
-			navigate('/login')
+			navigate('/user-dashboard', { state: { username: loginData.username } })
+			localStorage.setItem('loggedIn', true)
 		} catch (err) {
-			console.log('line 49 of register error', err)
+			console.log('line 47 of register error', err)
 			if (err.status == 400) {
 				alert(err.message)
 			}
 		}
-		setRedirect(true)
 	}
 
 	return (
@@ -61,26 +62,8 @@ export default function SignUp() {
 
 				{/* <img src={logo} className="logo"/> */}
 
-				<h1 className="login-msg">Create an account</h1>
+				<h1 className="login-msg">Login to your account</h1>
 				<form onSubmit={handleSubmit} className="login-form">
-					<label className="user-first-name">
-						<input className="login-input"
-							placeholder="First Name"
-							type="text"
-							name="firstname"
-							value={loginData.firstname}
-							onChange={handleChange}
-						/>
-					</label>
-					<label className="user-last-name">
-						<input className="login-input"
-							placeholder="Last Name"
-							type="text"
-							name="lastname"
-							value={loginData.lastname}
-							onChange={handleChange}
-						/>
-					</label>
 					<label className="login-username">
 						<input className="login-input"
 							placeholder="Username"
@@ -99,7 +82,7 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
-					<input type="submit" value="Sign Up" className="login-btns login-submit-btn" />
+					<input type="submit" value="Login" className="login-btns login-submit-btn" />
 					{/* <p className="login-OR"> or</p>
 
 				<button className="login-btns login-google-btn">
@@ -108,11 +91,11 @@ export default function SignUp() {
 				</button> */}
 				</form>
 				<p className="sign-up-msg">
-					Already a member? <Link to="/login">Login</Link>
+					Dont have an account? <Link to="/signup"> Sign Up </Link>
 				</p>
 				<hr className="login-footer-line" />
 				<p className="login-footer-msg">
-					By continuing in you agree to Drop-In's Terms of Service and Privacy Policy
+					By continuing in you agree to Drop-In's Terms of Service, Privacy Policy
 				</p>
 
 			</div>

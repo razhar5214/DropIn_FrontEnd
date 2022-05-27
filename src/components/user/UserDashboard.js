@@ -1,8 +1,8 @@
 import React from "react"
 import { useState } from "react"
-import '../styles/UserDashboard.css'
 import { useLocation } from 'react-router-dom';
 import UserNavbar from "./UserNavbar"
+import '../../styles/UserDashboard.css'
 
 export default function UserDashboard() {
     const [clickedMyProfile, setClickedMyProfile] = useState(false)
