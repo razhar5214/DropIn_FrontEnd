@@ -16,8 +16,6 @@ export default function Login() {
 
 	const google_logo = "https://p1.hiclipart.com/preview/209/923/667/google-logo-background-g-suite-google-pay-google-doodle-text-circle-line-area-png-clipart.jpg"
 
-	console.log(loginData)
-
 	const handleChange = (event) => {
 		setLoginData(prevData => {
 			return {
@@ -46,7 +44,7 @@ export default function Login() {
 				throw resObject
 			}
 			navigate('/user-dashboard', { state: { username: loginData.username } })
-			localStorage.setItem('loggedIn', true)
+			localStorage.setItem('isLoggedIn', 'yes')
 		} catch (err) {
 			console.log('line 47 of register error', err)
 			if (err.status == 400) {
@@ -76,7 +74,7 @@ export default function Login() {
 					<label className="login-password">
 						<input className="login-input"
 							placeholder="Password"
-							type="text"
+							type="password"
 							name="password"
 							value={loginData.password}
 							onChange={handleChange}

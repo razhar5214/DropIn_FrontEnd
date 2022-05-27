@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/navbar.css'
-// import BackgroundImage from '../images/apartment-skyline.jpg'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import BackgroundImage from '../images/landing-background2.png'
 import Logo from '../images/logo2.png'
+import '../styles/navbar.css'
 
 export default function Navbar() {
     return (
