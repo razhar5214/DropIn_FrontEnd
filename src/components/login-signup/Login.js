@@ -28,6 +28,7 @@ export default function Login() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		setRedirect(true)
+		localStorage.setItem('isLoggedIn', false)
 
 		try {
 			const res = await fetch(`https://dropin-backend.herokuapp.com/login`, {
@@ -44,7 +45,8 @@ export default function Login() {
 				throw resObject
 			}
 			navigate('/user-dashboard', { state: { username: loginData.username } })
-			localStorage.setItem('isLoggedIn', 'yes')
+			localStorage.setItem('isLoggedIn', true)
+			
 		} catch (err) {
 			console.log('line 47 of register error', err)
 			if (err.status == 400) {

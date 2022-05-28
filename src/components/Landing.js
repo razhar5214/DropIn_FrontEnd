@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import BackgroundImage from '../images/map-of-nyc2.png'
 import AutoSearch from './AutoSearch'
-import Navbar from './Navbar'
-import UserNavbar from './user/UserNavbar'
+import Navbar from './Navbar.js'
+
 import '../styles/Landing.css'
 
 export default function Landing(props) {
@@ -30,7 +30,7 @@ export default function Landing(props) {
 
         <div className='landing-page'>
 
-            {isLoggedIn ? <UserNavbar /> : <Navbar />}
+             <Navbar />
 
             <div>
                 <img className='landing-background' src={BackgroundImage} alt='' />

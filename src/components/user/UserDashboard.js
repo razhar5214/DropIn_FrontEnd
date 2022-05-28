@@ -1,7 +1,7 @@
 import React from "react"
 import { useState } from "react"
-import { useLocation } from 'react-router-dom';
-import UserNavbar from "./UserNavbar"
+import { useLocation } from 'react-router-dom'
+import Navbar from "../Navbar"
 import '../../styles/UserDashboard.css'
 
 export default function UserDashboard() {
@@ -16,7 +16,7 @@ export default function UserDashboard() {
 
     return (
         <div className="user-dashboard">
-            <UserNavbar />
+            <Navbar />
             <h1>Hi {username}</h1>
             <div className="content-div">
                 <button>My Profile</button>
