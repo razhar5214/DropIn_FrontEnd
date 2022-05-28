@@ -16,7 +16,7 @@
 }
 
 .nav-img {
-    opacity: 0.7;
+    opacity: 0.75;
     position: absolute;
     left: 0;
     top: 0;
@@ -33,31 +33,32 @@
 }
 
 .nav-buttons {
-    margin: 0;
-    padding: 0;
     font-family: 'Lexend Peta', sans-serif;
     font-size: 80%;
     font-weight: 400;
     display: flex;
     position: relative;
-    flex-direction: row;
     align-items: center;
     text-align: center;
+    justify-content: space-between;
 }
 
-.nav-input {
-    position: relative;
-    display: block;
-    margin: 0 auto;
-    align-self: center;
+.nav-buttons-logged-in {
+    display: flex;
+    width: fit-content;
+    margin-right: 7%;
 }
 
 .nav-home-btn {
-    margin-left: 10%;
+    margin-left: 7%;
 }
 
 .nav-login-btn {
-    margin-right: 10%;
+    margin-right: 7%;
+}
+
+.nav-profile-btn {
+    margin-right: 7%;
 }
 
 a:link, a:visited, a:active {

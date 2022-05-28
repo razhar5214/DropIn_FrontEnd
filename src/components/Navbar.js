@@ -22,17 +22,15 @@ export default function Navbar(props) {
 
     return (
         <div className='navbar'>
-            <img className='nav-img' src={BackgroundImage} alt='NYC Apartments' />
+            <div><img className='nav-img' src={BackgroundImage} alt='NYC Apartments' /></div>
             <div className='nav-buttons'>
                 <div className='nav-home-btn'> <Link to='/'>HOME </Link></div>
-                <img className='nav-logo' src={Logo} alt='Building and map pin(https://www.flaticon.com/free-icon/houses_353354#)' />
-
-                {isLoggedIn ? <>
-                    <div className='user-nav-login-btn'> <Link to='/user-dashboard'>PROFILE</Link></div>
-                    <div className='nav-login-btn'> <Link to='/' onClick={logoutUser}>LOGOUT</Link></div>
-                </> : <div className='nav-login-btn'><Link to='/login'>LOGIN </Link></div>
+                <div><img className='nav-logo' src={Logo} alt='Building and map pin(https://www.flaticon.com/free-icon/houses_353354#)' /></div>
+                {isLoggedIn ? <div className='nav-buttons-logged-in'>
+                    <div className='nav-profile-btn'> <Link to='/user-dashboard'>PROFILE</Link></div>
+                    <div className='nav-logout-btn'> <Link to='/' onClick={logoutUser}>LOGOUT</Link></div>
+                </div> : <div className='nav-login-btn'><Link to='/login'>LOGIN </Link></div>
                 }
-
             </div>
         </div>
     )
