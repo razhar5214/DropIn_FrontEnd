@@ -9,20 +9,19 @@ import scriptLoader from 'react-async-script-loader'
 
 
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
-    console.log('AutoSearch Props: ',props);
+    console.log('AutoSearch Props: ', props)
     
     let navigate = useNavigate()
 
-    const [address, setAddress] = useState('');
+    const [address, setAddress] = useState('')
 
-    const [userInput, setUserInput] = useState('');
+    const [userInput, setUserInput] = useState('')
 
 
     const [coordinates, setCoordinates] = useState({
         lat: null,
         lng: null,
-    });
-
+    })
 
     useEffect(() => {
             props.updateAddress(address)
