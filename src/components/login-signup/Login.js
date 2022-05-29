@@ -59,10 +59,12 @@ export default function Login() {
 			<Navbar />
 			<div className="login-box">
 
-				{/* <img src={logo} className="logo"/> */}
+			<form onSubmit={handleSubmit} className="login-form">
+
+				<h1 className='login-title'>DROP-IN</h1>
 
 				<h1 className="login-msg">Login to your account</h1>
-				<form onSubmit={handleSubmit} className="login-form">
+				
 					<label className="login-username">
 						<input className="login-input"
 							placeholder="Username"

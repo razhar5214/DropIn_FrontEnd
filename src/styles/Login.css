@@ -1,7 +1,6 @@
-
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
-.login-box{
+.login-box {
 	width: 525px;
 	height: 750px;
 	border: none;
@@ -9,33 +8,47 @@
 	position: relative;
 	left: 50%;
 	/* top used to be -200 */
-	top: -250px;
-    /* margin-right: -50%;  */
+	top: -300px;
+	/* margin-right: -50%;  */
 	transform: translate(-50%, 50%);
 	/* background-color: rgb(2, 88, 114); */
 	background-color: rgb(241, 240, 240);
 }
-.logo{
+
+.login-title {
+	/* margin: 0 auto; */
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-size: 50px;
+	font-weight: 500;
+	color: #F87D68;
+	text-shadow: 0px 4px 4px rgba(8, 8, 8, 0.25)
+}
+
+.logo {
 	margin-top: 10;
 	height: 80px;
 	width: 100px;
 	/* background-color: blue; */
 	margin-left: 40%;
 }
-.login-msg{
+
+.login-msg {
 	font-size: 30px;
 	text-align: center;
-	margin-inline: auto;
-	padding-top: 100px;
+	/* margin-inline: auto; */
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
-.login-form{
+
+.login-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 40px;
-	
 }
-.login-input{
+
+.login-input {
 	background-color: rgb(217, 217, 223);
 	width: 270px;
 	height: 60px;
@@ -45,7 +58,8 @@
 	padding-left: 15px;
 	font-size: 20px;
 }
-.login-btns{
+
+.login-btns {
 	color: rgb(255, 255, 255);
 	width: 240px;
 	height: 45px;
@@ -53,13 +67,15 @@
 	border-radius: 20px;
 	cursor: pointer;
 	border-style: none;
-	
+
 }
-.login-submit-btn{
+
+.login-submit-btn {
 	background-color: rgb(0, 0, 0);
 	margin-top: 40px;
 }
-.login-fb-btn{
+
+.login-fb-btn {
 	background-color: rgb(20, 96, 247);
 	margin-top: -15px;
 	width: 240px;
@@ -67,17 +83,19 @@
 	text-align: left;
 	font-size: 16px;
 }
-.fb-logo{
+
+.fb-logo {
 	height: 30px;
 	width: 50px;
 	margin-left: -10px;
 	margin-top: 5px;
 }
-.fb-text{
+
+.fb-text {
 	margin-top: 12px;
 }
 
-.login-google-btn{
+.login-google-btn {
 	background-color: rgb(255, 255, 255);
 	color: black;
 	margin-top: 10px;
@@ -87,41 +105,47 @@
 	font-size: 16px;
 	border-style: solid;
 }
-.google-logo{
+
+.google-logo {
 	height: 20px;
 	width: 20px;
 	margin-top: 10px;
 	margin-left: 12px;
 }
-.google-text{
+
+.google-text {
 	margin-top: 11px;
 	margin-left: 10px;
 	font-size: 18px;
 }
-.login-OR{
+
+.login-OR {
 	font-size: 30px;
 	margin-top: 10px;
 }
-.sign-up-msg{
+
+.sign-up-msg {
 	text-align: center;
 	width: 300px;
 	font-size: 20px;
-	margin:0 auto;
+	margin: 0 auto;
 	margin-top: 20px;
 	color: rgb(0, 0, 0);
 }
-.login-footer-line{
-	width:50%;
-    margin:20px auto;
+
+.login-footer-line {
+	width: 50%;
+	margin: 20px auto;
 }
-.login-footer-msg{
+
+.login-footer-msg {
 	text-align: center;
 	width: 300px;
 	font-size: 15px;
-	margin:0 auto;
+	margin: 0 auto;
 }
 
-p a:any-link{
-    color: rgb(0, 0, 210);
-    text-decoration: none;
+p a:any-link {
+	color: rgb(0, 0, 210);
+	text-decoration: none;
 }

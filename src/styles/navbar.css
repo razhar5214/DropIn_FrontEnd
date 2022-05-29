@@ -16,7 +16,7 @@
 }
 
 .nav-img {
-    opacity: 0.75;
+    opacity: 0.65;
     position: absolute;
     left: 0;
     top: 0;
@@ -30,6 +30,12 @@
     width: 70px;
     height: 5%;
     margin: 0 auto;
+    transition: all .2s ease-in-out;
+}
+
+.nav-logo:hover {
+    transform: scale(1.2);
+    /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .nav-buttons {

@@ -11,7 +11,9 @@ export default function SignUp() {
 		firstname: "",
 		lastname: "",
 		username: "",
-		password: ""
+		password: "",
+		user_type: "",
+		favorites: ""
 	});
 	const [redirect, setRedirect] = useState(false)
 
@@ -31,7 +33,7 @@ export default function SignUp() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const result = await fetch(`https://dropin-backend.herokuapp.com/register`, {
+			const res = await fetch(`https://dropin-backend.herokuapp.com/register`, {
 				method: 'POST',
 				mode: 'cors',
 				headers: {
@@ -39,12 +41,14 @@ export default function SignUp() {
 				},
 				body: JSON.stringify(loginData)
 			})
-			const resObject = await result.json()
+			const resObject = await res.json()
 			console.log('line 43 of registerUser', resObject)
 			if (resObject.status == 400) {
 				throw resObject
 			}
+			alert('Account created')
 			navigate('/login')
+
 		} catch (err) {
 			console.log('line 49 of register error', err)
 			if (err.status == 400) {
@@ -61,8 +65,10 @@ export default function SignUp() {
 
 				{/* <img src={logo} className="logo"/> */}
 
-				<h1 className="login-msg">Create an account</h1>
 				<form onSubmit={handleSubmit} className="login-form">
+					<h1 className='login-title'>DROP-IN</h1>
+
+					<h1 className="login-msg">Create an account</h1>
 					<label className="user-first-name">
 						<input className="login-input"
 							placeholder="First Name"
@@ -99,6 +105,28 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
+
+					<div className="login-input-radio">
+						<h3>I am a</h3>
+						<label className="login-input-radio-tenant">
+							Tenant
+							<input
+								type="radio"
+								name="user_type"
+								value="tenant"
+								onChange={handleChange}
+							/>
+						</label>
+						<label className="login-input-radio-landlord">
+							Landlord
+							<input
+								type="radio"
+								name="user_type"
+								value="landlord"
+								onChange={handleChange}
+							/>
+						</label>
+					</div>
 					<input type="submit" value="Sign Up" className="login-btns login-submit-btn" />
 					{/* <p className="login-OR"> or</p>
 
