@@ -5,26 +5,76 @@ import '../../styles/ReviewForm.css'
 export default function ReviewForm(props) {
     const unique_id = uuid();
 
-    //these states track the data in the review form
-    const [reviewBody, setReviewBody] = useState("")
-    const [reviewAuthor, setReviewAuthor] = useState("")
-    const [reviewTime, setReviewTime] = useState("")
+    const [currentReview, setCurrentReview] = useState({
+        body: "",
+        author: "",
+        timestamp: ""
+    })
 
-    const handleSubmit = (event) => {
-        console.log('reviewBody', reviewBody)
+    // const [reviewBody, setReviewBody] = useState("")
+    // const [reviewAuthor, setReviewAuthor] = useState("")
+    // const [reviewTime, setReviewTime] = useState("")
+
+    const handleChange = (event) => {
+        setCurrentReview(prevData => {
+            return {
+                ...prevData,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+    const handleSubmit = async(event) => {
+        console.log('current review', currentReview)
         event.preventDefault()
 
-        setReviewTime(Math.floor(Date.now() / 1000))
+        // currentReview.timestamp = (Math.floor(Date.now() / 1000))
+        await setCurrentReview(prev => ({
+            ...prev,
+            timestamp: (Math.floor(Date.now() / 1000))
+        }))
 
         props.setUserReviews(prev => [...prev, {
-            body: reviewBody,
-            author: reviewAuthor,
-            timestamp: reviewTime
-        }], reviewBody, reviewAuthor
+            body: currentReview.body,
+            author: currentReview.author,
+            timestamp: currentReview.timestamp
+        }], currentReview.body, currentReview.author
         )
 
-        setReviewBody('')
-        setReviewAuthor('')
+        setCurrentReview(prev => ({
+            ...prev,
+            body: "",
+            author: ""
+        }))
+
+
+        // try {
+        //     const res = await fetch(`https://dropin-backend.herokuapp.com/review`, {
+        //         method: 'POST',
+        //         mode: 'cors',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             review_id: ,
+        //             building_id: ,
+        //             username: ,
+        //             comment_body: ,
+        //             star_rating
+        //         })
+        //     })
+        //     const resObject = await res.json()
+        //     console.log('line 43 of review form', resObject)
+        //     if (resObject.status == 400) {
+        //         throw resObject
+        //     }
+        //     alert('Review added')
+
+        // } catch (err) {
+        //     console.log('error : line 50 of review form', err)
+        //     if (err.status == 400) {
+        //         alert(err.message)
+        //     }
+        // }
     }
 
     return (
@@ -32,17 +82,17 @@ export default function ReviewForm(props) {
             <form onSubmit={handleSubmit} className='user-review-form'>
                 <input
                     className='user-review-textbox'
-                    name='review'
+                    name='body'
                     placeholder='Leave a review'
-                    value={reviewBody}
-                    onChange={(e) => setReviewBody(e.target.value)}
+                    value={currentReview.body}
+                    onChange={handleChange}
                 />
                 <input
                     className='user-author-textbox'
                     name='author'
                     placeholder='Add your name'
-                    value={reviewAuthor}
-                    onChange={(e) => setReviewAuthor(e.target.value)}
+                    value={currentReview.author}
+                    onChange={handleChange}
                 />
                 <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
             </form>
