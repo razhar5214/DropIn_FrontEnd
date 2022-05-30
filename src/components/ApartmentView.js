@@ -15,14 +15,14 @@ export default function ApartmentView(props) {
 
     const [userReview, setUserReview] = useState([
         {
-            body: null,
-            author: null,
-            timestamp: null
+            body: "",
+            author: "",
+            timestamp: ""
         }
     ])
-    const [reviewBody, setReviewBody] = useState(null)
-    const [reviewAuthor, setReviewAuthor] = useState(null)
-    const [reviewTime, setReviewTime] = useState(null)
+    const [reviewBody, setReviewBody] = useState("")
+    const [reviewAuthor, setReviewAuthor] = useState("")
+    const [reviewTime, setReviewTime] = useState("")
     const [newestReviewBtn, setNewestReviewBtn] = useState(false)
 
     const dataByNewest = [].concat(userReview)
@@ -106,14 +106,6 @@ export default function ApartmentView(props) {
                         <div className='review-content'>Management takes a while to respond.</div>
                         <div className='review-author'>Crystal T.</div>
                     </div>
-                    {/* <div className='review-card'>
-                        <div className='review-content'>Really friendly neighbors.</div>
-                        <div className='review-author'>Anna M.</div>
-                    </div>
-                    <div className='review-card'>
-                        <div className='review-content'>It's a quiet place, I like it.</div>
-                        <div className='review-author'>Linda A.</div>
-                    </div> */}
 
                     {newestReviewBtn ?
                         dataByNewest.map((item) => {
@@ -130,11 +122,8 @@ export default function ApartmentView(props) {
                                 </>
                             );
                         })
-                        :
-
-                        //if user sorts by new, change the rendering of the reviews by newest review added AKA shortest timestamp. else, show the reviews normally
-
-                        userReview.map((item) => {
+                        //If user sorts by new, then render the reviews by newest AKA sort by shortest timestamp. Else, show the reviews normally as they are added.
+                        : userReview.map((item) => {
                             return (
                                 <>
                                     {item.body ? (
@@ -148,13 +137,10 @@ export default function ApartmentView(props) {
                                 </>
                             );
                         })}
-
                 </div>
-
 
                 {/* USER INPUT - review*/}
                 <form onSubmit={handleSubmit} className='user-review-form'>
-
                     <input
                         className='user-review-textbox'
                         name='review'
@@ -169,10 +155,8 @@ export default function ApartmentView(props) {
                         value={reviewAuthor}
                         onChange={(e) => setReviewAuthor(e.target.value)}
                     />
-
                     <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
                 </form>
-
             </div>
         </>
     )

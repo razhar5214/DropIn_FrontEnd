@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../Navbar"
 import "../../styles/Login.css"
 
-export default function SignUp() {
+export default function SignUp(props) {
 	let navigate = useNavigate()
 	const [loginData, setLoginData] = useState({
 		firstname: "",
@@ -20,6 +20,10 @@ export default function SignUp() {
 	const google_logo = "https://p1.hiclipart.com/preview/209/923/667/google-logo-background-g-suite-google-pay-google-doodle-text-circle-line-area-png-clipart.jpg"
 
 	console.log(loginData);
+
+	// function updateUserData(loginData) {
+	// 	props.updateUserData(loginData) //sending it up to App.js
+	// }
 
 	const handleChange = (event) => {
 		setLoginData(prevData => {
@@ -56,6 +60,7 @@ export default function SignUp() {
 			}
 		}
 		setRedirect(true)
+		// updateUserData(loginData)
 	}
 
 	return (

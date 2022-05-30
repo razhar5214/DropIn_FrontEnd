@@ -7,7 +7,6 @@ import '../styles/navbar.css'
 
 export default function Navbar(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    const itemFromLocalStorage = localStorage.getItem('isLoggedIn')
 
     let navigate = useNavigate()
 

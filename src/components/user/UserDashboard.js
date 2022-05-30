@@ -1,23 +1,43 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useState } from "react"
-import { useLocation } from 'react-router-dom'
 import Navbar from "../Navbar"
 import '../../styles/UserDashboard.css'
 
-export default function UserDashboard() {
-    const [clickedMyReviews, setClickedMyReviews] = useState(false)
+export default function UserDashboard(props) {
 
-    const location = useLocation()
-    let username = location.state.username
-    let usernameArray = username.split('')
-    username = usernameArray[0].toUpperCase() + username.substring(1).toLowerCase()
+    const [clickedMyReviews, setClickedMyReviews] = useState(false)
+    const usernameLocalStorage = localStorage.getItem('username')
+    const [loginData, setLoginData] = useState({
+        firstname: "",
+        lastname: "",
+        username: "",
+        password: "",
+        user_type: "",
+        favorites: ""
+    });
+
+    useEffect(() => {
+        console.log(loginData)
+        setLoginData(loginData => props.loginData)
+    }, [props])
+
+    // let username = location.state.username
+    // let usernameArray = username.split('')
+    // username = usernameArray[0].toUpperCase() + username.substring(1).toLowerCase()
 
     return (
         <div className="user-dashboard">
             <Navbar />
-            <h1>Hi {username}</h1>
+            {/* <h1>Hi, {props.loginData.username}</h1> */}
+            <h1>Hi, {usernameLocalStorage}</h1>
             <div className="content-div">
                 <button>My Reviews</button>
+            </div>
+            <div>
+                <h3>My account details</h3>
+                <p>{loginData.firstname}</p>
+                <p>{loginData.lastname}</p>
+                <p>{loginData.username}</p>
             </div>
         </div>
     )
