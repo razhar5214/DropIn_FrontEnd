@@ -59,13 +59,13 @@ export default function Login() {
 			<Navbar />
 			<div className="login-box">
 
-			<form onSubmit={handleSubmit} className="login-form">
+				<form onSubmit={handleSubmit} className="login-form">
 
-				<h1 className='login-title'>DROP-IN</h1>
+					<h1 className='login-title'>DROP-IN</h1>
 
-				<h1 className="login-msg">Login to your account</h1>
-				
-					<label className="login-username">
+					<h1 className="login-msg">Login to your account</h1>
+
+					<label>
 						<input className="login-input"
 							placeholder="Username"
 							type="text"
@@ -74,7 +74,7 @@ export default function Login() {
 							onChange={handleChange}
 						/>
 					</label>
-					<label className="login-password">
+					<label>
 						<input className="login-input"
 							placeholder="Password"
 							type="password"
@@ -84,21 +84,21 @@ export default function Login() {
 						/>
 					</label>
 					<input type="submit" value="Login" className="login-btns login-submit-btn" />
+
 					{/* <p className="login-OR"> or</p>
+					<button className="login-btns login-google-btn">
+						<img src={google_logo} className="google-logo" />
+						<p className="google-text">Continue with Google</p>
+					</button> */}
 
-				<button className="login-btns login-google-btn">
-					<img src={google_logo} className="google-logo"/> 
-					<p className="google-text">Continue with Google</p>
-				</button> */}
+					<p className="sign-up-msg">
+						Dont have an account? <Link to="/signup"> Sign Up </Link>
+					</p>
+					<hr className="login-footer-line" />
+					<p className="login-footer-msg">
+						By continuing in you agree to Drop-In's Terms of Service, Privacy Policy
+					</p>
 				</form>
-				<p className="sign-up-msg">
-					Dont have an account? <Link to="/signup"> Sign Up </Link>
-				</p>
-				<hr className="login-footer-line" />
-				<p className="login-footer-msg">
-					By continuing in you agree to Drop-In's Terms of Service, Privacy Policy
-				</p>
-
 			</div>
 		</div>
 	)

@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;600;700&display=swap'); */
 
 .landing-background {
-    background-image: url('../images/map-of-nyc2.png') no-repeat center center fixed;
-    background-position: center;
+    /* background-image: url('../images/map-of-nyc2.png') no-repeat center center fixed; */
+    background-image: url('../images/background-with-buildings-pinned.png') no-repeat center center fixed;
+    
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
@@ -18,8 +19,9 @@
     right: 0;
     bottom: 0;
     margin: auto;
-    -webkit-filter: saturate(400%);
-    filter: saturate(400%);
+
+    /* -webkit-filter: saturate(400%);
+    filter: saturate(400%); */
 }
 
 .landing-search {

@@ -69,7 +69,7 @@ export default function SignUp() {
 					<h1 className='login-title'>DROP-IN</h1>
 
 					<h1 className="login-msg">Create an account</h1>
-					<label className="user-first-name">
+					<label>
 						<input className="login-input"
 							placeholder="First Name"
 							type="text"
@@ -78,7 +78,7 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
-					<label className="user-last-name">
+					<label>
 						<input className="login-input"
 							placeholder="Last Name"
 							type="text"
@@ -87,7 +87,7 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
-					<label className="login-username">
+					<label>
 						<input className="login-input"
 							placeholder="Username"
 							type="text"
@@ -96,7 +96,7 @@ export default function SignUp() {
 							onChange={handleChange}
 						/>
 					</label>
-					<label className="login-password">
+					<label>
 						<input className="login-input"
 							placeholder="Password"
 							type="text"
@@ -106,8 +106,8 @@ export default function SignUp() {
 						/>
 					</label>
 
-					<div className="login-input-radio">
-						<h3>I am a</h3>
+					<h3>I am a</h3>
+					<div className="login-input-radios">
 						<label className="login-input-radio-tenant">
 							Tenant
 							<input
@@ -128,21 +128,21 @@ export default function SignUp() {
 						</label>
 					</div>
 					<input type="submit" value="Sign Up" className="login-btns login-submit-btn" />
+
 					{/* <p className="login-OR"> or</p>
+					<button className="login-btns login-google-btn">
+						<img src={google_logo} className="google-logo" />
+						<p className="google-text">Continue with Google</p>
+					</button> */}
 
-				<button className="login-btns login-google-btn">
-					<img src={google_logo} className="google-logo"/> 
-					<p className="google-text">Continue with Google</p>
-				</button> */}
+					<p className="sign-up-msg">
+						Already a member? <Link to="/login">Login</Link>
+					</p>
+					<hr className="login-footer-line" />
+					<p className="login-footer-msg">
+						By continuing in you agree to Drop-In's Terms of Service and Privacy Policy
+					</p>
 				</form>
-				<p className="sign-up-msg">
-					Already a member? <Link to="/login">Login</Link>
-				</p>
-				<hr className="login-footer-line" />
-				<p className="login-footer-msg">
-					By continuing in you agree to Drop-In's Terms of Service and Privacy Policy
-				</p>
-
 			</div>
 		</div>
 	)

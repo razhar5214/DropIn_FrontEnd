@@ -5,9 +5,7 @@ import Navbar from "../Navbar"
 import '../../styles/UserDashboard.css'
 
 export default function UserDashboard() {
-    const [clickedMyProfile, setClickedMyProfile] = useState(false)
     const [clickedMyReviews, setClickedMyReviews] = useState(false)
-    const [clickedSettings, setClickedSettings] = useState(false)
 
     const location = useLocation()
     let username = location.state.username
@@ -19,9 +17,7 @@ export default function UserDashboard() {
             <Navbar />
             <h1>Hi {username}</h1>
             <div className="content-div">
-                <button>My Profile</button>
                 <button>My Reviews</button>
-                <button>Settings</button>
             </div>
         </div>
     )

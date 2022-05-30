@@ -7,7 +7,6 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import scriptLoader from 'react-async-script-loader'
 
-
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     console.log('AutoSearch Props: ', props)
     

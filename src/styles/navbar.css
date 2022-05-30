@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Lexend+Peta:wght@300;400;700&display=swap'); */
 
 .navbar {
     margin: 0 auto;
-    padding: 15px 0px;
+    padding: 8px 0px;
     font-size: 30px;
     overflow: hidden;
     position: sticky;
@@ -16,7 +16,8 @@
 }
 
 .nav-img {
-    opacity: 0.65;
+    opacity: 0.7;
+    background-color: black;
     position: absolute;
     left: 0;
     top: 0;

@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 .login-box {
+	margin: 20px auto;
 	width: 525px;
 	height: 750px;
 	border: none;
 	border-radius: 70px;
-	position: relative;
+	/* position: relative; */
+	position: absolute;
 	left: 50%;
 	/* top used to be -200 */
 	top: -300px;
@@ -35,7 +37,7 @@
 }
 
 .login-msg {
-	font-size: 30px;
+	font-size: 25px;
 	text-align: center;
 	/* margin-inline: auto; */
 	margin-top: 10px;
@@ -46,6 +48,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	margin: 0 auto;
 }
 
 .login-input {
@@ -56,7 +59,27 @@
 	border-style: none;
 	margin-top: 20px;
 	padding-left: 15px;
+	font-size: 17px;
+}
+
+.login-input-radio-tenant {
+	margin-right: 10px;
+	background-color: rgb(217, 217, 223);
+	border-radius: 20px;
+	padding: 10px;
+	border-style: none;
 	font-size: 20px;
+	font-size: 16px;
+}
+
+
+.login-input-radio-landlord {
+	margin-left: 10px;
+	background-color: rgb(217, 217, 223);
+	border-radius: 20px;
+	padding: 10px;
+	border-style: none;
+	font-size: 16px;
 }
 
 .login-btns {
@@ -139,10 +162,13 @@
 }
 
 .login-footer-msg {
+	margin-top: 0;
+	margin-bottom: 0;
 	text-align: center;
 	width: 300px;
 	font-size: 15px;
-	margin: 0 auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 p a:any-link {
