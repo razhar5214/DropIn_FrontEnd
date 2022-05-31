@@ -1,0 +1,15 @@
+#star-rating-btn {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.on {
+    color: rgb(234, 203, 27);
+}
+
+.off {
+    color: #ccc;
+}

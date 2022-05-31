@@ -1,7 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
 import { withScriptjs, withGoogleMap } from 'react-google-maps'
-import { v4 as uuid } from 'uuid'
 import Navbar from './Navbar'
 import Map from './Map'
 import ApartmentPic from './ApartmentPic'
