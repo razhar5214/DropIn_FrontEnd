@@ -30,8 +30,6 @@ export default function Reviews() {
     }
 
     const getReviewsFromBackend = async () => {
-        console.log('placeID i am sending to backend', placeID)
-        console.log('address i am sending to backend', address)
         try {
             const res = await fetch(`https://dropin-backend.herokuapp.com/building-reviews`, {
                 method: 'POST',
@@ -66,37 +64,6 @@ export default function Reviews() {
                 alert(err.message)
             }
         }
-        // try {
-        //     const res = await fetch(`https://dropin-backend.herokuapp.com/reviews`, {
-        //         method: 'GET',
-        //         mode: 'cors',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-
-        //     })
-        //     const resObject = await res.json()
-
-        //     console.log('line 49 of rendering reviews', resObject)
-
-        //     if (resObject.status == 400) {
-        //         throw resObject
-        //     }
-
-        //     for (let i = 0; i < resObject.length; i++) {
-        //         setUserReviews(prev => [...prev, {
-        //             body: resObject[i].comment_body,
-        //             author: resObject[i].username,
-        //             timestamp: resObject[i].timestamp
-        //         }])
-        //     }
-
-        // } catch (err) {
-        //     console.log('error : line 61 of rendering reviews', err)
-        //     if (err.status == 400) {
-        //         alert(err.message)
-        //     }
-        // }
     }
 
     return (
