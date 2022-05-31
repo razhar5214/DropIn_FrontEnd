@@ -1,3 +1,5 @@
+//CHILD ELEMENT. MAKES POST REQUES TO BACKEND WITH NEW REVIEW DATA
+
 import React, { useState } from 'react';
 import { v4 as uuid } from 'uuid'
 import Rating from './Rating';
@@ -12,6 +14,7 @@ export default function ReviewForm(props) {
         {
             review_id: unique_id,
             building_id: placeID,
+            address: address,
             username: "",
             comment_body: "",
             star_rating: 0,
@@ -28,7 +31,7 @@ export default function ReviewForm(props) {
         })
     }
 
-    const handleSubmit = async(event) => {
+    const handleSubmit = async (event) => {
         console.log('current review', currentReview)
         event.preventDefault()
 
@@ -45,7 +48,7 @@ export default function ReviewForm(props) {
             alert("Provide a star rating")
             return
         }
-        
+
         //send this review up to its parent component (Reviews.js) so that all of the reviews can be rendered and mapped on the page
         props.setUserReviews(prev => [...prev, {
             body: currentReview.comment_body,
@@ -70,15 +73,17 @@ export default function ReviewForm(props) {
                 },
                 body: JSON.stringify(currentReview)
             })
+
             const resObject = await res.json()
-            console.log('line 76 of review form', resObject)
+            console.log('line 77 of review form', resObject)
+
             if (resObject.status == 400) {
                 throw resObject
             }
             alert('Review added')
 
         } catch (err) {
-            console.log('error : line 83 of review form', err)
+            console.log('error : line 85 of review form', err)
             if (err.status == 400) {
                 alert(err.message)
             }

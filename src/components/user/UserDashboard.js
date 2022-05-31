@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { useState } from "react"
 import Navbar from "../Navbar"
+import UserReviews from "./UserReviews"
 import '../../styles/UserDashboard.css'
 
 export default function UserDashboard(props) {
@@ -31,8 +32,13 @@ export default function UserDashboard(props) {
             {/* <h1>Hi, {props.loginData.username}</h1> */}
             <h1>Hi, {usernameLocalStorage}</h1>
             <div className="content-div">
-                <button>My Reviews</button>
+                <button onClick={() => setClickedMyReviews(true)}>My Reviews</button>
             </div>
+
+            {
+                clickedMyReviews ? <UserReviews/> : <></>
+            }
+            
             <div>
                 <h3>My account details</h3>
                 <p>{loginData.firstname}</p>

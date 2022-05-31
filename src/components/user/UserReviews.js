@@ -1,23 +1,19 @@
-//PARENT ELEMENT. RENDERS ARRAY OF REVIEWS FROM THE BACKEND
-
 import React, { useState, useEffect } from 'react';
-import ReviewForm from './ReviewForm'
-import '../../styles/Reviews.css'
 
-export default function Reviews() {
-    const [placeID, setPlaceID] = useState(localStorage.getItem('placeID'))
-    const [address, setAddress] = useState(localStorage.getItem('address'))
+export default function UserReviews() {
+    const [username, setUsername] = useState(localStorage.getItem('username'))
 
     useEffect(() => {
         getReviewsFromBackend()
-    }, [placeID])
+    }, [username])
 
     //array of objects to store all of our reviews
     const [userReviews, setUserReviews] = useState([
         {
             body: "",
             author: "",
-            timestamp: ""
+            timestamp: "",
+            address: ""
         }
     ])
 
@@ -33,19 +29,20 @@ export default function Reviews() {
 
     const getReviewsFromBackend = async () => {
         try {
-            const res = await fetch(`https://dropin-backend.herokuapp.com/building-reviews`, {
+            const res = await fetch(`https://dropin-backend.herokuapp.com/my-reviews`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    building_id: placeID
+                    username: username
                 })
             })
+
             const resObject = await res.json()
 
-            console.log('line 49 of rendering reviews', resObject)
+            console.log('line 44 of rendering user reviews', resObject)
 
             if (resObject.status == 400) {
                 throw resObject
@@ -56,12 +53,13 @@ export default function Reviews() {
                 setUserReviews(prev => [...prev, {
                     body: resObject[i].comment_body,
                     author: resObject[i].username,
-                    timestamp: resObject[i].timestamp
+                    timestamp: resObject[i].timestamp,
+                    address: resObject[i].address,
                 }])
             }
 
         } catch (err) {
-            console.log('error : line 61 of rendering reviews', err)
+            console.log('error : line 60 of rendering user reviews', err)
             if (err.status == 400) {
                 alert(err.message)
             }
@@ -74,19 +72,8 @@ export default function Reviews() {
                 <button onClick={handleSortByNewest}>SORT BY NEWEST</button>
             </div>
 
-            {/* SHOW REVIEWS OF ADDRESS */}
-            <h1 className='reviews-title'>What residents have to say ...</h1>
-
+            {/* SHOW REVIEWS POSTED BY USER */}
             <div className='reviews'>
-                {/* Hard Coded Filler Data */}
-                <div className='review-card'>
-                    <div className='review-content'>There are issues with the hot water.</div>
-                    <div className='review-author'>James A.</div>
-                </div>
-                <div className='review-card'>
-                    <div className='review-content'>Management takes a while to respond.</div>
-                    <div className='review-author'>Crystal T.</div>
-                </div>
 
                 {newestReviewBtn ?
                     sortReviewByNewest.map((item) => {
@@ -96,6 +83,7 @@ export default function Reviews() {
                                     <div className='review-card'>
                                         <div className='review-content'>{item.body}</div>
                                         <div className='review-author'>{item.author}</div>
+                                        <div className='review-content'>({item.address})</div>
                                     </div>
                                 ) : (
                                     <p></p>
@@ -111,6 +99,7 @@ export default function Reviews() {
                                     <div className='review-card'>
                                         <div className='review-content'>{item.body}</div>
                                         <div className='review-author'>{item.author}</div>
+                                        <div className='review-content'>({item.address})</div>
                                     </div>
                                 ) : (
                                     <p></p>
@@ -118,8 +107,6 @@ export default function Reviews() {
                             </>
                         );
                     })}
-
-                <ReviewForm setUserReviews={setUserReviews} />
             </div>
         </>
     )
