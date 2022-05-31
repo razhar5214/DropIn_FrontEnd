@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import BackgroundImage from '../images/landing-background2.png'
+// import BackgroundImage from '../images/apartment-skyline.jpg'
 import Logo from '../images/logo2.png'
-import '../styles/navbar.css'
+import "../styles/navbar.css"
 
 export default function Navbar(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
