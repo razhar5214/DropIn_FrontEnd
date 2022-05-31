@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PlacesAutocomplete, {
@@ -7,22 +7,20 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import scriptLoader from 'react-async-script-loader'
 
-
 function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
-    console.log('AutoSearch Props: ',props);
+    console.log('AutoSearch Props: ', props)
     
     let navigate = useNavigate()
 
-    const [address, setAddress] = useState("");
+    const [address, setAddress] = useState('')
 
-    const [userInput, setUserInput] = useState("");
+    const [userInput, setUserInput] = useState('')
 
 
     const [coordinates, setCoordinates] = useState({
         lat: null,
         lng: null,
-    });
-
+    })
 
     useEffect(() => {
             props.updateAddress(address)
@@ -35,29 +33,34 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     }
 
     const handleSelect = async (value, valuePlaceID) => {
-        console.log(valuePlaceID);
-        console.log('in handleSelect', address)
-        console.log('in handleSelect', coordinates)
+        console.log('valuePlaceID ', valuePlaceID);
+        console.log('in handleSelect ', address)
+        console.log('in handleSelect ', coordinates)
 
         const results = await geocodeByPlaceId(valuePlaceID);
         console.log(results)
         
         const latLng = await getLatLng(results[0]);
-        console.log(latLng)
-
+        console.log('latLng',latLng)
+        console.log('lat',results[0].geometry.location.lat())
+        
         setCoordinates(prevCoords => ({
             ...prevCoords,
             lat: latLng.lat,
             lng: latLng.lng
         }));
+
         setUserInput(value)
         setAddress(...address, address => value)
+
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
-        localStorage.setItem("address", value)
-        localStorage.setItem("lat", JSON.stringify(latLng.lat).substr(0,12))
-        localStorage.setItem("lng", JSON.stringify(latLng.lng).substr(0,12))
-        localStorage.setItem("placeID", JSON.stringify(valuePlaceID))
+
+        const placeID = valuePlaceID
+        localStorage.setItem('address', value)
+        localStorage.setItem('lat', JSON.stringify(latLng.lat).substr(0,12))
+        localStorage.setItem('lng', JSON.stringify(latLng.lng).substr(0,12))
+        localStorage.setItem('placeID', placeID)
         navigate('/apartment-view')
     }
 
@@ -70,17 +73,17 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
                        
                         <div>
                             <input {...getInputProps({
-                                placeholder: "Enter Address ...",
+                                placeholder: 'Enter Address ...',
                                 className: 'location-search-input'
                             })} />
 
-                            <div className="autocomplete-dropdown-container">
+                            <div className='autocomplete-dropdown-container'>
                                 {loading && <div>Loading...</div>}
 
                                 {suggestions.map((suggestion, key) => {
                                     const style = suggestion.active ?
-                                        { backgroundColor: "#4287f5", cursor: "pointer" } :
-                                        { backgroundColor: "#ffffff", cursor: "pointer" }
+                                        { backgroundColor: '#4287f5', cursor: 'pointer' } :
+                                        { backgroundColor: '#ffffff', cursor: 'pointer' }
                                     key = suggestion.description;
 
                                     return (
