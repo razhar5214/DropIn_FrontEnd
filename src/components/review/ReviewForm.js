@@ -6,6 +6,7 @@ import '../../styles/ReviewForm.css'
 export default function ReviewForm(props) {
     const unique_id = uuid()
     const placeID = localStorage.getItem('placeID')
+    const address = localStorage.getItem('address')
 
     const [currentReview, setCurrentReview] = useState(
         {
@@ -35,23 +36,15 @@ export default function ReviewForm(props) {
         //     ...prev,
         //     //username, comment_body are being set in the form via on change function
         //     //star_rating is being set through the Rating.js component
-        //     // review_id: unique_id,
-        //     // building_id: placeID,
-        //     // timestamp: (Math.floor(Date.now() / 1000))
+        //     review_id: unique_id,
+        //     building_id: placeID,
+        //     timestamp: (Math.floor(Date.now() / 1000))
         // }))
 
         if (currentReview.star_rating == 0) {
             alert("Provide a star rating")
             return
         }
-
-        //old:
-        // props.setUserReviews(prev => [...prev, {
-        //     body: currentReview.comment_body,
-        //     author: currentReview.username,
-        //     timestamp: currentReview.timestamp
-        // }], currentReview.body, currentReview.author
-        // )
         
         //send this review up to its parent component (Reviews.js) so that all of the reviews can be rendered and mapped on the page
         props.setUserReviews(prev => [...prev, {

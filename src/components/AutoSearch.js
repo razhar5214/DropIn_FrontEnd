@@ -33,30 +33,34 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
     }
 
     const handleSelect = async (value, valuePlaceID) => {
-        console.log(valuePlaceID);
-        console.log('in handleSelect', address)
-        console.log('in handleSelect', coordinates)
+        console.log('valuePlaceID ', valuePlaceID);
+        console.log('in handleSelect ', address)
+        console.log('in handleSelect ', coordinates)
 
         const results = await geocodeByPlaceId(valuePlaceID);
         console.log(results)
         
         const latLng = await getLatLng(results[0]);
         console.log('latLng',latLng)
-        console.log(results[0].geometry.location.lat())
+        console.log('lat',results[0].geometry.location.lat())
         
         setCoordinates(prevCoords => ({
             ...prevCoords,
             lat: latLng.lat,
             lng: latLng.lng
         }));
+
         setUserInput(value)
         setAddress(...address, address => value)
+
         props.updateAddress(address)
         props.updateCoordinates(coordinates)
+
+        const placeID = valuePlaceID
         localStorage.setItem('address', value)
         localStorage.setItem('lat', JSON.stringify(latLng.lat).substr(0,12))
         localStorage.setItem('lng', JSON.stringify(latLng.lng).substr(0,12))
-        localStorage.setItem('placeID', JSON.stringify(valuePlaceID))
+        localStorage.setItem('placeID', placeID)
         navigate('/apartment-view')
     }
 

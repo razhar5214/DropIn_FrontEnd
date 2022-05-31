@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import { v4 as uuid } from 'uuid'
+import React, { useState, useEffect } from 'react';
 import ReviewForm from './ReviewForm'
 import '../../styles/Reviews.css'
 
-export default function Reviews(props) {
+export default function Reviews() {
+    const [placeID, setPlaceID] = useState(localStorage.getItem('placeID'))
+    const [address, setAddress] = useState(localStorage.getItem('address'))
 
-    const unique_id = uuid();
+    useEffect(() => {
+        getReviewsFromBackend()
+    }, [placeID])
 
-    //array of objects for all of our reviews
+    //array of objects to store all of our reviews
     const [userReviews, setUserReviews] = useState([
         {
             body: "",
@@ -24,6 +27,76 @@ export default function Reviews(props) {
     const handleSortByNewest = (event) => {
         event.preventDefault()
         setNewestReviewBtn(true)
+    }
+
+    const getReviewsFromBackend = async () => {
+        console.log('placeID i am sending to backend', placeID)
+        console.log('address i am sending to backend', address)
+        try {
+            const res = await fetch(`https://dropin-backend.herokuapp.com/building-reviews`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    building_id: placeID
+                })
+            })
+            const resObject = await res.json()
+
+            console.log('line 49 of rendering reviews', resObject)
+
+            if (resObject.status == 400) {
+                throw resObject
+            }
+
+            //set the reviews to be the response of array of addresses received from the backend
+            for (let i = 0; i < resObject.length; i++) {
+                setUserReviews(prev => [...prev, {
+                    body: resObject[i].comment_body,
+                    author: resObject[i].username,
+                    timestamp: resObject[i].timestamp
+                }])
+            }
+
+        } catch (err) {
+            console.log('error : line 61 of rendering reviews', err)
+            if (err.status == 400) {
+                alert(err.message)
+            }
+        }
+        // try {
+        //     const res = await fetch(`https://dropin-backend.herokuapp.com/reviews`, {
+        //         method: 'GET',
+        //         mode: 'cors',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+
+        //     })
+        //     const resObject = await res.json()
+
+        //     console.log('line 49 of rendering reviews', resObject)
+
+        //     if (resObject.status == 400) {
+        //         throw resObject
+        //     }
+
+        //     for (let i = 0; i < resObject.length; i++) {
+        //         setUserReviews(prev => [...prev, {
+        //             body: resObject[i].comment_body,
+        //             author: resObject[i].username,
+        //             timestamp: resObject[i].timestamp
+        //         }])
+        //     }
+
+        // } catch (err) {
+        //     console.log('error : line 61 of rendering reviews', err)
+        //     if (err.status == 400) {
+        //         alert(err.message)
+        //     }
+        // }
     }
 
     return (
