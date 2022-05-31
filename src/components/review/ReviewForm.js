@@ -92,16 +92,16 @@ export default function ReviewForm(props) {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className='user-review-form'>
+            <form onSubmit={handleSubmit} className='review-form'>
                 <input
-                    className='user-review-textbox'
+                    className='review-textbox'
                     name='comment_body'
                     placeholder='Leave a review'
                     value={currentReview.comment_body}
                     onChange={handleChange}
                 />
                 <input
-                    className='user-author-textbox'
+                    className='author-textbox'
                     name='username'
                     placeholder='Add your name'
                     value={currentReview.username}
@@ -110,7 +110,7 @@ export default function ReviewForm(props) {
                 <Rating currentReview={currentReview} setCurrentReview={setCurrentReview} />
 
                 <h1>{currentReview.star_rating}</h1>
-                <button type='submit' className='user-review-submit-btn'>SUBMIT</button>
+                <button type='submit' className='review-submit-btn'>SUBMIT</button>
             </form>
         </>
     )

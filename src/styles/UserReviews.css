@@ -1,11 +1,11 @@
 
-.reviews-title {
+.user-reviews-title {
     margin-top: 8%;
     /* margin-left: 10%; */
     font-size: 22px;
 }
 
-.reviews {
+.user-reviews {
     /* background-color: brown; */
     /* width: 100%; */
     margin: 0 auto;
@@ -17,7 +17,7 @@
     width: auto;
 }
 
-.review-card {
+.user-review-card {
     background-color: rgb(248, 125, 103);
     width: 40%;
     /* height: 100px; */
@@ -28,12 +28,12 @@
     margin-bottom: 5%;
 }
 
-.review-content {
+.user-review-content {
     /* font-size: 18px; */
     font-size: 110%;
 }
 
-.review-author {
+.user-review-author {
     float: right;
     margin-top: 20%;
     font-size: 100%;

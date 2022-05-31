@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/UserReviews.css'
 
 export default function UserReviews() {
     const [username, setUsername] = useState(localStorage.getItem('username'))
@@ -72,18 +73,16 @@ export default function UserReviews() {
                 <button onClick={handleSortByNewest}>SORT BY NEWEST</button>
             </div>
 
-            {/* SHOW REVIEWS POSTED BY USER */}
-            <div className='reviews'>
-
+            <div className='user-reviews'>
                 {newestReviewBtn ?
                     sortReviewByNewest.map((item) => {
                         return (
                             <>
                                 {item.body ? (
-                                    <div className='review-card'>
-                                        <div className='review-content'>{item.body}</div>
-                                        <div className='review-author'>{item.author}</div>
-                                        <div className='review-content'>({item.address})</div>
+                                    <div className='user-review-card'>
+                                        <div className='user-review-content'>{item.body}</div>
+                                        <div className='user-review-author'>{item.author}</div>
+                                        <div className='user-review-content'>({item.address})</div>
                                     </div>
                                 ) : (
                                     <p></p>
@@ -96,10 +95,10 @@ export default function UserReviews() {
                         return (
                             <>
                                 {item.body ? (
-                                    <div className='review-card'>
-                                        <div className='review-content'>{item.body}</div>
-                                        <div className='review-author'>{item.author}</div>
-                                        <div className='review-content'>({item.address})</div>
+                                    <div className='user-review-card'>
+                                        <div className='user-review-content'>{item.body}</div>
+                                        <div className='user-review-author'>{item.author}</div>
+                                        <div className='user-review-content'>({item.address})</div>
                                     </div>
                                 ) : (
                                     <p></p>
