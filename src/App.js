@@ -6,6 +6,7 @@ import Landing from './components/Landing';
 import Login from "./components/login-signup/Login"
 import SignUp from "./components/login-signup/SignUp"
 import UserDashboard from "./components/user/UserDashboard"
+import scriptLoader from 'react-async-script-loader'
 
 function App() {
   const [address, setAddress] = useState('')
@@ -52,5 +53,5 @@ function App() {
   );
 }
 
-// export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}&libraries=places`])(App);
-export default App
+export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}&libraries=places`])(App);
+// export default App
