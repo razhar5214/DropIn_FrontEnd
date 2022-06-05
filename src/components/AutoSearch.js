@@ -1,76 +1,74 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PlacesAutocomplete, {
-    geocodeByPlaceId,
-    getLatLng,
-} from 'react-places-autocomplete';
+import PlacesAutocomplete from 'react-places-autocomplete';
 import scriptLoader from 'react-async-script-loader'
 
-function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
-    console.log('AutoSearch Props: ', props)
-    
-    let navigate = useNavigate()
+function AutoSearch(props) {
 
-    const [address, setAddress] = useState('')
+    console.log('AutoSearch Props: ', window.google)
+
+    let navigate = useNavigate()
 
     const [userInput, setUserInput] = useState('')
 
-
-    const [coordinates, setCoordinates] = useState({
-        lat: null,
-        lng: null,
-    })
+    const [isScriptLoaded, setIsScriptLoaded] = useState(false)
+    const [isScriptLoadSucceed, setIsScriptLoadSucceed] = useState(false)
 
     useEffect(() => {
-            props.updateAddress(address)
-            props.updateCoordinates(coordinates)
-    }, [address])
-
+        if (window.google) {
+            setIsScriptLoaded(true)
+            setIsScriptLoadSucceed(true)
+        }
+    }, [window.google])
 
     const handleChange = (value) => {
         setUserInput(value)
     }
 
-    const handleSelect = async (value, valuePlaceID) => {
-        console.log('valuePlaceID ', valuePlaceID);
-        console.log('in handleSelect ', address)
-        console.log('in handleSelect ', coordinates)
+    const handleSelect = (value, valuePlaceID) => {
+        console.log('valuePlaceID ', valuePlaceID)
+        navigate(`/apartment-view/${valuePlaceID}`)
 
-        const results = await geocodeByPlaceId(valuePlaceID);
-        console.log(results)
-        
-        const latLng = await getLatLng(results[0]);
-        console.log('latLng',latLng)
-        console.log('lat',results[0].geometry.location.lat())
-        
-        setCoordinates(prevCoords => ({
-            ...prevCoords,
-            lat: latLng.lat,
-            lng: latLng.lng
-        }));
+        // console.log('in handleSelect ', address)
+        // console.log('in handleSelect ', coordinates)
 
-        setUserInput(value)
-        setAddress(...address, address => value)
+        // const results = await geocodeByPlaceId(valuePlaceID);
+        // console.log(results)
 
-        props.updateAddress(address)
-        props.updateCoordinates(coordinates)
+        // const latLng = await getLatLng(results[0]);
+        // console.log('latLng',latLng)
+        // console.log('lat',results[0].geometry.location.lat())
 
-        const placeID = valuePlaceID
-        localStorage.setItem('address', value)
-        localStorage.setItem('lat', JSON.stringify(latLng.lat).substr(0,12))
-        localStorage.setItem('lng', JSON.stringify(latLng.lng).substr(0,12))
-        localStorage.setItem('placeID', placeID)
-        navigate('/apartment-view')
+        // setCoordinates(prevCoords => ({
+        //     ...prevCoords,
+        //     lat: latLng.lat,
+        //     lng: latLng.lng
+        // }));
+
+        // setUserInput(value)
+        // setAddress(...address, address => value)
+
+        // props.updateAddress(address)
+        // props.updateCoordinates(coordinates)
+
+        // const placeID = valuePlaceID
+        // localStorage.setItem('address', value)
+        // localStorage.setItem('lat', JSON.stringify(latLng.lat).substr(0,12))
+        // localStorage.setItem('lng', JSON.stringify(latLng.lng).substr(0,12))
+        // localStorage.setItem('placeID', placeID)
+
+        // navigate('/apartment-view/')
     }
 
-    if (props.isScriptLoaded && props.isScriptLoadSucceed) {
+
+    // if (props.isScriptLoaded && props.isScriptLoadSucceed) {
+    if (isScriptLoaded) {
         return (
             <div>
-
                 <PlacesAutocomplete value={userInput} valuePlaceID onChange={handleChange} onSelect={handleSelect}>
                     {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                       
+
                         <div>
                             <input {...getInputProps({
                                 placeholder: 'Enter Address ...',
@@ -80,14 +78,13 @@ function AutoSearch(props, isScriptLoaded, isScriptLoadSucceed) {
                             <div className='autocomplete-dropdown-container'>
                                 {loading && <div>Loading...</div>}
 
-                                {suggestions.map((suggestion, key) => {
+                                {suggestions.map((suggestion) => {
                                     const style = suggestion.active ?
                                         { backgroundColor: '#4287f5', cursor: 'pointer' } :
                                         { backgroundColor: '#ffffff', cursor: 'pointer' }
-                                    key = suggestion.description;
 
                                     return (
-                                        <div key={suggestion.description} {...getSuggestionItemProps(suggestion, { style })}>
+                                        <div {...getSuggestionItemProps(suggestion, { style })} key={suggestion.placeId} >
                                             <span>{suggestion.description}</span>
                                         </div>
                                     )

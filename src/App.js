@@ -7,7 +7,7 @@ import Login from "./components/login-signup/Login"
 import SignUp from "./components/login-signup/SignUp"
 import UserDashboard from "./components/user/UserDashboard"
 
-function App() {
+export default function App() {
   const [address, setAddress] = useState('')
   const [coordinates, setCoordinates] = useState({
     lat: null,
@@ -21,6 +21,7 @@ function App() {
     user_type: "",
     favorites: ""
   })
+  const [loginStatus, setLoginStatus] = useState(false)
 
   function updateAddress(newAddress) {
     //console.log('getting child address data in app.js:', newAddress)
@@ -41,9 +42,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes className='routes'>
-          <Route exact path="/" element={<Landing updateAddress={updateAddress} updateCoordinates={updateCoordinates} />} />
-          <Route exact path="/apartment-view" element={<ApartmentView address={address} coordinates={coordinates} />} />
-          <Route exact path="/login" element={<Login updateUserData={updateUserData}/>} />
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/apartment-view/:placeID" element={<ApartmentView loginStatus={loginStatus}/>} />
+          <Route exact path="/login" element={<Login setLoginStatus={setLoginStatus} updateUserData={updateUserData}/>} />
           <Route exact path="/signup" element={<SignUp updateUserData={updateUserData} />} />
           <Route exact path="/user-dashboard" element={<UserDashboard loginData={loginData} />} />
         </Routes>
@@ -53,4 +54,3 @@ function App() {
 }
 
 // export default scriptLoader([`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAP_API}&libraries=places`])(App);
-export default App

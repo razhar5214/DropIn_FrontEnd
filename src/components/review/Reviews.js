@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import ReviewForm from './ReviewForm'
 import '../../styles/Reviews.css'
 
-export default function Reviews() {
+export default function Reviews(props) {
     const [placeID, setPlaceID] = useState(localStorage.getItem('placeID'))
     const [address, setAddress] = useState(localStorage.getItem('address'))
 
@@ -89,37 +89,37 @@ export default function Reviews() {
                 </div>
 
                 {newestReviewBtn ?
-                    sortReviewByNewest.map((item) => {
+                    sortReviewByNewest.map((item, index) => {
                         return (
-                            <>
+                            <div key={index}>
                                 {item.body ? (
-                                    <div className='review-card'>
+                                    <div className='review-card' key={index}>
                                         <div className='review-content'>{item.body}</div>
                                         <div className='review-author'>{item.author}</div>
                                     </div>
                                 ) : (
                                     <p></p>
                                 )}
-                            </>
+                            </div>
                         );
                     })
                     //If user sorts by new, then render the reviews by newest AKA sort by shortest timestamp. Else, show the reviews normally as they are added.
-                    : userReviews.map((item) => {
+                    : userReviews.map((item, index) => {
                         return (
-                            <>
+                            <div key={index}>
                                 {item.body ? (
-                                    <div className='review-card'>
+                                    <div className='review-card' key={index}>
                                         <div className='review-content'>{item.body}</div>
                                         <div className='review-author'>{item.author}</div>
                                     </div>
                                 ) : (
                                     <p></p>
                                 )}
-                            </>
+                            </div>
                         );
                     })}
-
-                <ReviewForm setUserReviews={setUserReviews} />
+                {/* {props.loginStatus ? <ReviewForm setUserReviews={setUserReviews} /> : <></>} */}
+                <ReviewForm/>
             </div>
         </>
     )

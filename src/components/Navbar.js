@@ -16,7 +16,7 @@ export default function Navbar(props) {
             console.log('itemFromLocalStorage is true')
             setIsLoggedIn(true)
         }
-    }, [isLoggedIn])
+    }, [])
 
     const logoutUser = () => {
         localStorage.removeItem('isLoggedIn')
@@ -33,11 +33,13 @@ export default function Navbar(props) {
             <div className='nav-buttons'>
                 <div className='nav-home-btn'> <Link to='/'>HOME </Link></div>
                 <div><img className='nav-logo' src={Logo} alt='Building and map pin(https://www.flaticon.com/free-icon/houses_353354#)' onClick={gotToHome}/></div>
+                
                 {isLoggedIn ? <div className='nav-buttons-logged-in'>
                     <div className='nav-profile-btn'> <Link to='/user-dashboard'>PROFILE</Link></div>
                     <div className='nav-logout-btn'> <Link to='/' onClick={logoutUser}>LOGOUT</Link></div>
                 </div> : <div className='nav-login-btn'><Link to='/login'>LOGIN </Link></div>
                 }
+                
             </div>
         </div>
     )

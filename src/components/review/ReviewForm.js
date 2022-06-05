@@ -103,7 +103,7 @@ export default function ReviewForm(props) {
                 <input
                     className='author-textbox'
                     name='username'
-                    placeholder='Add your name'
+                    placeholder='Add a nickname'
                     value={currentReview.username}
                     onChange={handleChange}
                 />

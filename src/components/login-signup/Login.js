@@ -48,6 +48,7 @@ export default function Login(props) {
 				throw resObject
 			}
 			// navigate('/user-dashboard', { state: { username: loginData.username } })
+			props.setLoginStatus(true)
 			navigate('/user-dashboard')
 			localStorage.setItem('isLoggedIn', true)
 			localStorage.setItem('username', loginData.username)

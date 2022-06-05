@@ -4,6 +4,7 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+    pointer-events: none;
 }
 
 .review-textbox {
