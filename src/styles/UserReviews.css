@@ -1,13 +1,10 @@
 
 .user-reviews-title {
     margin-top: 8%;
-    /* margin-left: 10%; */
     font-size: 22px;
 }
 
 .user-reviews {
-    /* background-color: brown; */
-    /* width: 100%; */
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +17,6 @@
 .user-review-card {
     background-color: rgb(248, 125, 103);
     width: 40%;
-    /* height: 100px; */
     height: auto;
     margin: 0 auto;
     padding: 20px;
@@ -29,7 +25,6 @@
 }
 
 .user-review-content {
-    /* font-size: 18px; */
     font-size: 110%;
 }
 

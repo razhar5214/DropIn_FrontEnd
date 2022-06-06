@@ -79,14 +79,14 @@ export default function Reviews(props) {
 
             <div className='reviews'>
                 {/* Hard Coded Filler Data */}
-                <div className='review-card'>
+                {/* <div className='review-card'>
                     <div className='review-content'>There are issues with the hot water.</div>
                     <div className='review-author'>James A.</div>
                 </div>
                 <div className='review-card'>
                     <div className='review-content'>Management takes a while to respond.</div>
                     <div className='review-author'>Crystal T.</div>
-                </div>
+                </div> */}
 
                 {newestReviewBtn ?
                     sortReviewByNewest.map((item, index) => {
@@ -98,7 +98,7 @@ export default function Reviews(props) {
                                         <div className='review-author'>{item.author}</div>
                                     </div>
                                 ) : (
-                                    <p></p>
+                                    <></>
                                 )}
                             </div>
                         );
@@ -113,14 +113,17 @@ export default function Reviews(props) {
                                         <div className='review-author'>{item.author}</div>
                                     </div>
                                 ) : (
-                                    <p></p>
+                                    <></>
                                 )}
                             </div>
                         );
                     })}
                 {/* {props.loginStatus ? <ReviewForm setUserReviews={setUserReviews} /> : <></>} */}
-                <ReviewForm/>
-            </div>
+                
+                </div>
+                
+                <ReviewForm setUserReviews={setUserReviews}/>
+            
         </>
     )
 }
